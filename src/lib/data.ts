@@ -5,7 +5,7 @@ export const siteConfig = {
   name: "Ciki Zeng",
   tagline: "One Person x AI = One Team",
   url: "https://cikizeng.com",
-  gumroadUrl: "https://gumroad.com", // placeholder until Gumroad listing is live
+  gumroadUrl: "https://cikizeng.gumroad.com", // update with actual product URLs after Gumroad listing
 };
 
 export const stats = [
@@ -162,7 +162,7 @@ export const pricingTiers = [
       "Knowledge management rules",
     ],
     cta: "Get Core Template",
-    href: siteConfig.gumroadUrl,
+    href: "https://1350461780142.gumroad.com/l/ldptc",
   },
   {
     name: "Full",
@@ -170,13 +170,14 @@ export const pricingTiers = [
     description: "Complete Methodology",
     features: [
       "Everything in Core",
-      "Full SOP with 5 engines",
-      "Dispatch table & routing logic",
-      "Four-layer memory structure",
-      "Cross-project protocols",
+      "CLAUDE.md template (AI partner OS)",
+      "Skill dispatch table & decision trees",
+      "Four-layer memory architecture",
+      "Cross-project isolation protocols",
+      "Decision framework (5 protocols)",
     ],
     cta: "Get Full Package",
-    href: siteConfig.gumroadUrl,
+    href: "https://1350461780142.gumroad.com/l/hfqazrm",
     highlighted: true,
   },
   {
@@ -185,13 +186,14 @@ export const pricingTiers = [
     description: "Harness OS Framework",
     features: [
       "Everything in Full",
-      "10 enforcement hooks (source code)",
-      "Installation script",
+      "7 enforcement hooks (JS source code)",
+      "Shared config + install script",
       "Hook configuration guide",
-      "Retire-if templates",
+      "Rule lifecycle (retire-if) templates",
+      "System charter",
     ],
     cta: "Get Framework",
-    href: siteConfig.gumroadUrl,
+    href: "https://1350461780142.gumroad.com/l/ulgtwj",
   },
 ];
 
