@@ -162,7 +162,7 @@ export const pricingTiers = [
       "Knowledge management rules",
     ],
     cta: "Get Core Template",
-    href: "https://1350461780142.gumroad.com/l/ldptc",
+    href: "https://cikizeng.gumroad.com/l/ldptc",
   },
   {
     name: "Full",
@@ -177,7 +177,7 @@ export const pricingTiers = [
       "Decision framework (5 protocols)",
     ],
     cta: "Get Full Package",
-    href: "https://1350461780142.gumroad.com/l/hfqazrm",
+    href: "https://cikizeng.gumroad.com/l/hfqazrm",
     highlighted: true,
   },
   {
@@ -193,7 +193,7 @@ export const pricingTiers = [
       "System charter",
     ],
     cta: "Get Framework",
-    href: "https://1350461780142.gumroad.com/l/ulgtwj",
+    href: "https://cikizeng.gumroad.com/l/ulgtwj",
   },
 ];
 
