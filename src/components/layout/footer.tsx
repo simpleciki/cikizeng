@@ -28,11 +28,19 @@ export function Footer() {
           </nav>
         </div>
 
-        <div className="mt-8 border-t border-foreground/10 pt-6 text-center">
+        <div className="mt-8 border-t border-foreground/10 pt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
           <p className="text-xs text-muted-foreground">
             &copy; {new Date().getFullYear()} {siteConfig.name}. Built solo with
             AI partnership.
           </p>
+          <div className="flex gap-4">
+            <Link href="/privacy" className="text-[10px] uppercase tracking-wider text-muted-foreground transition-colors hover:text-foreground">
+              Privacy
+            </Link>
+            <Link href="/terms" className="text-[10px] uppercase tracking-wider text-muted-foreground transition-colors hover:text-foreground">
+              Terms
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
