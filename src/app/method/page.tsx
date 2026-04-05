@@ -35,10 +35,10 @@ export default function MethodPage() {
                   <p className="text-xs text-muted-foreground mt-1">{section.subtitle}</p>
                 </div>
               </div>
-              <p className="text-sm leading-relaxed mb-5 pl-9">
+              <p className="text-sm leading-relaxed mb-5 sm:pl-9">
                 {section.content}
               </p>
-              <div className="ml-9 callout-highlight text-sm">
+              <div className="sm:ml-9 callout-highlight text-sm">
                 {section.highlight}
               </div>
             </section>

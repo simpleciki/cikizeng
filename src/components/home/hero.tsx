@@ -4,7 +4,7 @@ import { siteConfig } from "@/lib/data";
 
 export function Hero() {
   return (
-    <section className="py-28 sm:py-36" style={{ backgroundColor: '#D6EEFF' }}>
+    <section className="py-20 sm:py-36" style={{ backgroundColor: '#D6EEFF' }}>
       <div className="mx-auto max-w-5xl px-6 text-center">
         <AnimateIn delay={0} direction="none">
           <span className="inline-block accent-pill rounded-full px-4 py-1.5 font-mono text-xs tracking-[0.15em] uppercase mb-8">
@@ -13,7 +13,7 @@ export function Hero() {
         </AnimateIn>
 
         <AnimateIn delay={100}>
-          <h1 className="text-5xl font-bold tracking-tight sm:text-7xl leading-[1.1]">
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-7xl leading-[1.1]">
             One Person{" "}
             <span className="text-gradient">x AI</span>
             <br />

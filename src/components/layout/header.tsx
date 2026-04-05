@@ -72,6 +72,16 @@ export function Header() {
               {link.label}
             </Link>
           ))}
+          <a
+            href={siteConfig.gumroadUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMenuOpen(false)}
+            className="mt-2 block w-full rounded-lg border-2 border-[#383838] px-4 py-2 text-center text-xs font-bold uppercase tracking-wider"
+            style={{ backgroundColor: '#6FC2FF' }}
+          >
+            Get Started
+          </a>
         </nav>
       )}
     </header>

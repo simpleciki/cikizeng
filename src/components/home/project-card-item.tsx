@@ -35,7 +35,7 @@ export function ProjectCardItem({ project }: { project: Project }) {
         )}
       </div>
       <p className="text-xs text-muted-foreground mb-4">{project.tagline}</p>
-      <p className="text-sm leading-relaxed line-clamp-4 mb-4">{project.value}</p>
+      <p className="text-sm leading-relaxed mb-4">{project.value}</p>
       <div className="mt-auto pt-4 border-t border-foreground/10 space-y-3">
         <p className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
           {project.status}
