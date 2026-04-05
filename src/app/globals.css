@@ -48,73 +48,43 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-:root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-}
+/* ─── Warm Cream + Bold Borders ─── */
+/* Inspired by: MotherDuck (#F4EFEA bg, 2px borders, warm tones) */
+/* + guide-app (pastel accents, thick borders, high readability) */
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+:root {
+  --background: #F4EFEA;
+  --foreground: #2D2D2D;
+  --card: #FFFFFF;
+  --card-foreground: #2D2D2D;
+  --popover: #FFFFFF;
+  --popover-foreground: #2D2D2D;
+  --primary: #6FC2FF;
+  --primary-foreground: #FFFFFF;
+  --secondary: #FFDE00;
+  --secondary-foreground: #2D2D2D;
+  --muted: #EDE8E3;
+  --muted-foreground: #5C5C5C;
+  --accent: #D6EEFF;
+  --accent-foreground: #1A5A8A;
+  --destructive: #DC2626;
+  --border: #2D2D2D;
+  --input: #D4CFC9;
+  --ring: #6FC2FF;
+  --chart-1: #6FC2FF;
+  --chart-2: #FFDE00;
+  --chart-3: #53DBC9;
+  --chart-4: #A78BFA;
+  --chart-5: #FF7169;
+  --radius: 0.5rem;
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #2D2D2D;
+  --sidebar-primary: #6FC2FF;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #D6EEFF;
+  --sidebar-accent-foreground: #1A5A8A;
+  --sidebar-border: #2D2D2D;
+  --sidebar-ring: #6FC2FF;
 }
 
 @layer base {
@@ -125,6 +95,89 @@
     @apply bg-background text-foreground;
   }
   html {
-    @apply font-sans;
+    @apply font-sans scroll-smooth;
   }
+}
+
+/* ─── Section alternating backgrounds ─── */
+.bg-section-alt {
+  background-color: #FFFFFF;
+}
+
+.bg-section-warm {
+  background-color: #EDE8E3;
+}
+
+/* ─── Card with solid border (MotherDuck-style) ─── */
+.card-bordered {
+  border: 2px solid #383838;
+  border-radius: 1.25rem;
+  background: #FFFFFF;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-bordered:hover {
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0 #383838;
+}
+
+/* ─── Black label tag (MotherDuck plan name style) ─── */
+.label-tag {
+  display: inline-block;
+  background: #383838;
+  color: #FFFFFF;
+  font-family: var(--font-geist-mono);
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.375rem 1rem;
+  border-radius: 0.375rem;
+}
+
+/* ─── Highlight callout box (method page inline) ─── */
+.callout-highlight {
+  border: 2px solid #383838;
+  border-radius: 1rem;
+  background: #D6EEFF;
+  color: #2D2D2D;
+  padding: 1rem 1.25rem;
+  font-weight: 500;
+}
+
+/* ─── CTA card (homepage bottom) ─── */
+.cta-card {
+  border: 2px solid #383838;
+  border-radius: 1.25rem;
+  background: #FFFFFF;
+  padding: 2.5rem 2rem;
+}
+
+/* ─── Accent pill / badge ─── */
+.accent-pill {
+  background: #FFDE00;
+  color: #2D2D2D;
+  font-weight: 600;
+  border: 1.5px solid #2D2D2D;
+}
+
+/* ─── Accent colored text ─── */
+.text-gradient {
+  color: #4A9FE5;
+}
+
+/* ─── Light blue section background ─── */
+.bg-section-blue {
+  background-color: #D6EEFF;
+}
+
+/* ─── Section divider ─── */
+.divider-gradient {
+  height: 2px;
+  background: #2D2D2D;
+  opacity: 0.1;
+}
+
+/* ─── Stat number accent ─── */
+.stat-number {
+  color: #4F46E5;
 }
