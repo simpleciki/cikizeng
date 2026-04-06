@@ -72,9 +72,9 @@ export const projects: Project[] = [
     name: "SmartLearning",
     tagline: "AI Adaptive Learning Platform",
     problem:
-      "Generic study apps don't adapt to how each child actually learns. Kids waste time on things they already know and don't get enough help where they struggle.",
+      "Homeschool parents spend thousands on curriculum but still can't tell if their child truly mastered the material. When it's time to apply to schools, collecting and organizing learning records is expensive, exhausting, and the results are never good enough.",
     value:
-      "A three-layer anti-hallucination system with Bayesian Knowledge Tracing adapts in real-time. MAP-calibrated assessments track true progress, and a Portfolio builder prepares kids for school applications.",
+      "One platform that handles it all: AI-adaptive lessons that adjust to each child in real-time, MAP-calibrated assessments that track true mastery, and a Portfolio builder that turns months of learning into polished application-ready records. Worry-free for parents.",
     status: "V2.8 Beta — live",
     stack: ["Next.js", "Supabase", "Stripe", "OpenAI"],
     url: "https://smartlearning.cikizeng.com",
