@@ -61,7 +61,7 @@ export const projects: Project[] = [
     problem:
       "Figure skating coaches and parents spend hours reviewing competition videos frame by frame to analyze jump technique — and still miss critical details.",
     value:
-      "Upload a video, get AI-powered biomechanical analysis: takeoff angle, rotation count, landing stability, and personalized training plans. What takes a human 30 minutes takes JumpOnion 60 seconds.",
+      "Upload a video, get AI-powered biomechanical diagnosis: pre-rotation detection, severity measurements against performance targets, and personalized training plans with 54 drills across 7 categories. What takes a human 30 minutes takes JumpOnion 60 seconds.",
     status: "Live — V1.3+, 931 tests passing",
     stack: ["Next.js", "Render", "Vercel", "R2", "Modal", "Supabase", "Stripe", "LLM"],
     url: "https://jumponion.com",
@@ -87,7 +87,7 @@ export const projects: Project[] = [
     problem:
       "Generating accurate maintenance and construction quotes for enterprise retail chains involves dozens of variables — materials, labor rates, regional pricing, service type. Manual quoting is slow and error-prone.",
     value:
-      "Built for my company SunnyUnite to serve enterprise clients like UNIQLO. An AI-trained pricing engine generates competitive, accurate quotes in minutes instead of hours. The training methodology is proprietary — and the system has been in production use since v10.",
+      "An AI-powered quoting platform for facility maintenance companies. Dual-AI pricing engine with 5-part cost breakdowns, real-time margin analysis, and multi-level approval workflows. Generates market-validated quotes in under 5 seconds — in production use since v10.",
     status: "Production v10 — enterprise client in use",
     stack: ["Custom AI", "Proprietary Training"],
     url: "https://smartquotepro.vercel.app",
