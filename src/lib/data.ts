@@ -59,7 +59,7 @@ export const projects: Project[] = [
     name: "JumpOnion",
     tagline: "AI Figure Skating Jump Analysis",
     problem:
-      "Figure skating coaches and parents spend hours reviewing competition videos frame by frame to analyze jump technique — and still miss critical details.",
+      "Skaters and parents can't see what's actually wrong with a jump — so they train blind. Coaches know, but their time is expensive and limited. Without clear diagnosis, practice hours get wasted on the wrong fixes.",
     value:
       "Upload a video, get AI-powered biomechanical diagnosis: pre-rotation detection, severity measurements against performance targets, and personalized training plans with 54 drills across 7 categories. What takes a human 30 minutes takes JumpOnion 60 seconds.",
     status: "Live — V1.3+, 931 tests passing",
