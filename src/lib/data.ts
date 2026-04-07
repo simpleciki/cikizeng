@@ -426,4 +426,20 @@ export const caseStudies: CaseStudy[] = [
     punchline:
       "AI writing bugs isn't scary. AI writing bugs and not knowing — that's scary. Bug Confession turns 'fix and forget' into 'fix, reflect, and eliminate the pattern.'",
   },
+  {
+    id: "cross-project-knowledge-transfer",
+    date: "2026-04-06",
+    project: "JumpOnion × SmartLearning",
+    title: "One Project's Fix Became Every Project's Standard — In 3 Minutes",
+    scenario:
+      "SmartLearning added a Terms of Service consent checkbox to all Stripe Checkout flows. Later that day, a JumpOnion session started. Ciki asked: 'Should the payment link add this too?'",
+    rule:
+      "Startup Protocol — read the HOME.md hub dashboard first. The SmartLearning row said 'Added ToS consent checkbox to all Stripe Checkout flows' — specific enough to act on immediately.",
+    withoutSOP:
+      "The AI would treat it as a brand-new requirement: research Stripe docs, list pros and cons, ask Ciki to decide. No awareness that the exact same problem was already solved hours ago in another project.",
+    result:
+      "The AI cited the SmartLearning precedent directly, recommended 'add it for consistency,' and provided the exact code. One word: 'add it.' One line changed, tests passed, deployed. Question to production in under 3 minutes, zero research, zero rework.",
+    punchline:
+      "SmartLearning solved it \u2192 HOME.md recorded it \u2192 JumpOnion\u2019s agent read it \u2192 Ciki said one word \u2192 deployed. Four projects, one knowledge network. That\u2019s not documentation \u2014 that\u2019s compound leverage.",
+  },
 ];
