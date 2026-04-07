@@ -121,26 +121,26 @@ export default function SOPDrivenAutonomyPage() {
         <div className="mb-20">
           <Link
             href="/case-studies"
-            className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors mb-6"
+            className="inline-flex items-center gap-2 rounded-full border-2 border-[#383838] bg-white px-4 py-1.5 text-xs font-semibold transition-colors hover:bg-[#F4EFEA] mb-6"
           >
             <span aria-hidden>&larr;</span> Back to Case Studies
           </Link>
 
-          <span className="inline-block accent-pill rounded-full px-3 py-1 font-mono text-[10px] tracking-[0.15em] uppercase mb-4">
+          <span className="inline-block rounded-full bg-[#6FC2FF] text-white border-1.5 border-[#2D2D2D] px-3 py-1 font-mono text-[10px] tracking-[0.15em] uppercase font-semibold mb-4">
             Deep Dive
           </span>
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Your AI Isn&rsquo;t Smart &mdash; Your System Is
+            Your AI Isn&#39;t Smart — Your System Is
           </h1>
           <p className="mt-4 max-w-3xl text-sm leading-relaxed">
             Solo founders using AI agents observe a recurring phenomenon: after
-            enough sessions, the AI seems to &ldquo;get smarter.&rdquo; It
+            enough sessions, the AI seems to &quot;get smarter.&quot; It
             catches bugs before you do, refuses to ship when tests pass,
             switches strategies when stuck. This looks like AI self-improvement.
-            It isn&rsquo;t.
+            It isn&#39;t.
           </p>
           <p className="mt-3 max-w-3xl text-sm leading-relaxed font-semibold">
-            Every &ldquo;autonomous&rdquo; decision traces back to an explicit
+            Every &quot;autonomous&quot; decision traces back to an explicit
             rule in the SOP framework.
           </p>
 
@@ -227,7 +227,7 @@ export default function SOPDrivenAutonomyPage() {
                   </div>
                   <div className="rounded-lg border-2 border-[#383838] bg-[#FFDE00] p-4">
                     <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
-                      Proof it&rsquo;s SOP, not AI
+                      Proof it&#39;s SOP, not AI
                     </span>
                     <p className="mt-1">{cs.proof}</p>
                   </div>
@@ -370,7 +370,7 @@ export default function SOPDrivenAutonomyPage() {
           </div>
           <p className="mt-4 text-xs text-muted-foreground text-center">
             16 total instances documented across 3 projects. 0 involved AI
-            &ldquo;learning&rdquo; autonomy. All traced to explicit SOP rules.
+            &quot;learning&quot; autonomy. All traced to explicit SOP rules.
           </p>
         </div>
       </AnimateIn>
@@ -378,9 +378,9 @@ export default function SOPDrivenAutonomyPage() {
       {/* ── Closing statement ── */}
       <AnimateIn>
         <div className="callout-highlight text-sm leading-relaxed mb-16">
-          AI agents don&rsquo;t develop judgment. System designers encode
+          AI agents don&#39;t develop judgment. System designers encode
           judgment into executable rules. The SOP framework is that encoding
-          &mdash; and this page is the proof.
+          — and this page is the proof.
         </div>
       </AnimateIn>
 
@@ -394,7 +394,7 @@ export default function SOPDrivenAutonomyPage() {
             Install the system behind these results
           </h2>
           <p className="text-sm leading-relaxed mb-6 text-muted-foreground">
-            Templates, SOPs, and enforcement hooks &mdash; from $39.
+            Templates, SOPs, and enforcement hooks — from $39.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <LinkButton href="/pricing">See Pricing</LinkButton>

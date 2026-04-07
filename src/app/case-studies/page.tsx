@@ -23,7 +23,7 @@ export default function CaseStudiesPage() {
           </h1>
           <p className="mt-4 max-w-2xl text-sm leading-relaxed">
             Every methodology claim is backed by a real incident from production
-            development. These aren&#39;t hypotheticals &mdash; they&#39;re
+            development. These aren&#39;t hypotheticals — they&#39;re
             documented moments where the system caught what I would have missed.
           </p>
         </div>
@@ -41,15 +41,15 @@ export default function CaseStudiesPage() {
                 Deep Dive
               </span>
               <h2 className="text-lg font-bold tracking-tight sm:text-xl mt-1">
-                Your AI Isn&rsquo;t Smart &mdash; Your System Is
+                Your AI Isn&#39;t Smart — Your System Is
               </h2>
               <p className="text-sm leading-relaxed mt-2">
                 7 detailed cases across 3 projects prove every
-                &ldquo;autonomous&rdquo; AI decision traces back to an explicit
+                &quot;autonomous&quot; AI decision traces back to an explicit
                 SOP rule. See the three-layer architecture and full evidence.
               </p>
             </div>
-            <span className="shrink-0 inline-flex items-center justify-center rounded-full border-2 border-[#383838] bg-white px-5 py-2.5 text-sm font-semibold transition-colors hover:bg-[#F4EFEA]">
+            <span className="shrink-0 inline-flex items-center justify-center rounded-full border-2 border-[#383838] bg-[#6FC2FF] text-white px-5 py-2.5 text-sm font-semibold transition-colors hover:bg-[#5AB0ED]">
               Read the Deep Dive &rarr;
             </span>
           </div>
@@ -129,7 +129,7 @@ export default function CaseStudiesPage() {
             Install the methodology behind these results
           </h2>
           <p className="text-sm leading-relaxed mb-6 text-muted-foreground">
-            Templates, SOPs, and enforcement hooks &mdash; from $39.
+            Templates, SOPs, and enforcement hooks — from $39.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <LinkButton href="/pricing">See Pricing</LinkButton>
