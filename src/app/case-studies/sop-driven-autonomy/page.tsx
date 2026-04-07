@@ -121,7 +121,7 @@ export default function SOPDrivenAutonomyPage() {
         <div className="mb-20">
           <Link
             href="/case-studies"
-            className="inline-flex items-center gap-2 rounded-full border-2 border-[#383838] bg-white px-4 py-1.5 text-xs font-semibold transition-colors hover:bg-[#F4EFEA] mb-6"
+            className="inline-flex items-center gap-2 rounded-full border-2 border-[#383838] bg-[#FFDE00] px-4 py-1.5 text-xs font-semibold transition-colors hover:bg-[#F0D000] mb-6"
           >
             <span aria-hidden>&larr;</span> Back to Case Studies
           </Link>
