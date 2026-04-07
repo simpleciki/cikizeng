@@ -331,7 +331,7 @@ export default function SOPDrivenAutonomyPage() {
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b-2 border-[#383838] bg-[#EDE8E3]">
+                  <tr className="border-b-2 border-[#383838] bg-[#FFDE00]">
                     <th className="px-4 py-3 text-left font-mono text-[10px] font-bold uppercase tracking-wider">
                       Case
                     </th>
