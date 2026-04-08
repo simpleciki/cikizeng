@@ -7,7 +7,7 @@ import { caseStudies } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Case Studies — Ciki Zeng",
   description:
-    "14 documented incidents where the methodology caught real failures in production SaaS development.",
+    "17 documented incidents where the methodology caught real failures in production SaaS development.",
 };
 
 export default function CaseStudiesPage() {

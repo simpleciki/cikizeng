@@ -23,7 +23,7 @@ export function Hero() {
 
         <AnimateIn delay={200}>
           <p className="mx-auto mt-8 max-w-lg text-base leading-relaxed">
-            3 SaaS products. One person. No team, no outsourcing, no funding.
+            3 SaaS products + 1 methodology framework. One person. No team, no outsourcing, no funding.
             From idea to production &mdash; all with AI as a co-founder.
           </p>
         </AnimateIn>

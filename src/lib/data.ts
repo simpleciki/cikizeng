@@ -9,9 +9,9 @@ export const siteConfig = {
 };
 
 export const stats = [
-  { value: "3", label: "SaaS Products" },
-  { value: "931+", label: "Tests" },
-  { value: "13", label: "Case Studies" },
+  { value: "4", label: "Products Shipped" },
+  { value: "1000+", label: "Tests" },
+  { value: "17", label: "Case Studies" },
   { value: "10", label: "Enforcement Hooks" },
 ];
 
@@ -62,7 +62,7 @@ export const projects: Project[] = [
       "Skaters and parents can't see what's actually wrong with a jump — so they train blind. Coaches know, but their time is expensive and limited. Without clear diagnosis, practice hours get wasted on the wrong fixes.",
     value:
       "Upload a video, get AI-powered biomechanical diagnosis: pre-rotation detection, severity measurements against performance targets, and personalized training plans with 54 drills across 7 categories. What takes a human 30 minutes takes JumpOnion 60 seconds.",
-    status: "Live — V1.3+, 931 tests passing",
+    status: "Live — V1.3+, 1000+ tests passing",
     stack: ["Next.js", "Render", "Vercel", "R2", "Modal", "Supabase", "Stripe", "LLM"],
     url: "https://jumponion.com",
     accent: "#EBF9FF",
@@ -74,9 +74,9 @@ export const projects: Project[] = [
     problem:
       "Homeschool parents spend thousands on curriculum but still can't tell if their child truly mastered the material. When it's time to apply to schools, collecting and organizing learning records is expensive, exhausting, and the results are never good enough.",
     value:
-      "One platform that handles it all: AI-adaptive lessons that adjust to each child in real-time, MAP-calibrated assessments that track true mastery, and a Portfolio builder that turns months of learning into polished application-ready records. Worry-free for parents.",
+      "One platform that handles it all: 45+ AI modules covering language arts, STEM, writing, test prep, and FBLA competition coaching. AI-adaptive lessons adjust to each child in real-time, MAP-calibrated assessments track true mastery, and a Portfolio builder turns months of learning into polished application-ready records.",
     status: "V2.8 Beta — live",
-    stack: ["Next.js", "Supabase", "Stripe", "OpenAI"],
+    stack: ["Next.js 16", "Prisma", "Supabase", "Stripe", "DeepSeek", "Multi-AI"],
     url: "https://ivybloom.app",
     accent: "#F7F1FF",
   },
@@ -87,9 +87,9 @@ export const projects: Project[] = [
     problem:
       "Generating accurate maintenance and construction quotes for enterprise retail chains involves dozens of variables — materials, labor rates, regional pricing, service type. Manual quoting is slow and error-prone.",
     value:
-      "An AI-powered quoting platform for facility maintenance companies. Dual-AI pricing engine with 5-part cost breakdowns, real-time margin analysis, and multi-level approval workflows. Generates market-validated quotes in under 5 seconds — in production use since v10.",
-    status: "Production v10 — enterprise client in use",
-    stack: ["Custom AI", "Proprietary Training"],
+      "An AI-powered quoting platform for facility maintenance companies. Dual-AI pricing engine (Groq + Gemini) with NTE-aware cost breakdowns, real-time profit margin analysis, and multi-level approval workflows. Generates market-validated quotes in under 5 seconds — in production use since v10.",
+    status: "Production v10.2 — enterprise client in use",
+    stack: ["Next.js 15", "FastAPI", "Supabase", "Groq + Gemini", "Stripe"],
     url: "https://smartquotepro.vercel.app",
     restricted: true,
     restrictedNote:
@@ -202,7 +202,29 @@ export const navLinks = [
   { href: "/projects", label: "Projects" },
   { href: "/method", label: "Method" },
   { href: "/case-studies", label: "Case Studies" },
+  { href: "/blog", label: "Blog" },
   { href: "/pricing", label: "Pricing" },
+];
+
+export type BlogPost = {
+  slug: string;
+  title: string;
+  date: string;
+  excerpt: string;
+  readTime: string;
+  tags: string[];
+};
+
+export const blogPosts: BlogPost[] = [
+  {
+    slug: "day-1-building-figure-skating-ai",
+    title: "Day 1: Building a Figure Skating AI — Why I Started",
+    date: "2026-04-08",
+    excerpt:
+      "My kids train figure skating 5 days a week. Coaches cost $120/hour and their time is limited. I built an AI that diagnoses jumps in 60 seconds — here's why I started and what the first day looked like.",
+    readTime: "6 min",
+    tags: ["JumpOnion", "AI Engineering"],
+  },
 ];
 
 export type CaseStudy = {
@@ -441,5 +463,53 @@ export const caseStudies: CaseStudy[] = [
       "The AI cited the IvyBloom precedent directly, recommended 'add it for consistency,' and provided the exact code. One word: 'add it.' One line changed, tests passed, deployed. Question to production in under 3 minutes, zero research, zero rework.",
     punchline:
       "IvyBloom solved it \u2192 HOME.md recorded it \u2192 JumpOnion\u2019s agent read it \u2192 Ciki said one word \u2192 deployed. Four projects, one knowledge network. That\u2019s not documentation \u2014 that\u2019s compound leverage.",
+  },
+  {
+    id: "sop-driven-autonomy",
+    date: "2026-04-06",
+    project: "SOP Framework",
+    title: "Your AI Isn't Smart. Your System Is.",
+    scenario:
+      "Across 3 projects and 6 months, AI agents appeared to develop autonomous judgment: catching bugs before the developer, refusing to ship when tests passed, switching strategies when stuck, knowing when to wrap up sessions.",
+    rule:
+      "Three-Layer Architecture — Hooks (mechanical guarantee, ~100%), Skills (phase-triggered, ~95%), Rules (AI-executed, ~85%). Every 'autonomous' decision traced back to an explicit SOP rule.",
+    withoutSOP:
+      "Layer 0: AI fixes the immediate symptom and moves on. Accepts green tests as proof of correctness. No self-check, no pattern recognition, no session discipline. This is what most people get from AI coding assistants.",
+    result:
+      "16 instances analyzed across JumpOnion, IvyBloom, and CikiBrain. Zero involved AI 'learning' autonomy. All traced to explicit rules: Partner Challenge, Zero-Misdiagnosis, Bug Confession, Cross-Tool Handoff, Phase 6 Wrap-Up.",
+    punchline:
+      "AI agents don't develop judgment. System designers encode judgment into executable rules. The gap between Layer 0 and Layer 3 is the product.",
+  },
+  {
+    id: "brand-migration-cascade",
+    date: "2026-04-08",
+    project: "IvyBloom",
+    title: "187K+ References Changed Across 7 Layers — Zero Residue",
+    scenario:
+      "SmartLearning was rebranding to IvyBloom. Not a simple rename — it touched 7 system layers: GitHub repo, git remote, Vercel project, Claude Code/Codex/Cursor session configs, project memory, and CikiBrain hub documents.",
+    rule:
+      "Cascade Cleanup Protocol — any rename operation triggers automatic Grep across all systems + fix all references. No waiting for the human to point out missed spots. Combined with Cross-Platform Handoff Protocol for multi-tool sync.",
+    withoutSOP:
+      "Partial migration is worse than no migration. The executor changes the obvious spots (GitHub + Vercel) but misses hidden references in memory files, hooks, and launch.json. Days later, a session mysteriously fails because it read a ghost path.",
+    result:
+      "All 7 layers migrated in a single session. 187K+ path replacements with zero residue. Bridge memories written for old-to-new path mapping. HOME.md dashboard updated immediately. B+ strategy applied: only user-visible layers changed, internal vars left alone to avoid unnecessary risk.",
+    punchline:
+      "Rename = Cascade. Your AI should work like CASCADE DELETE — change one reference, automatically track and update every downstream dependency.",
+  },
+  {
+    id: "sop-self-healing",
+    date: "2026-04-08",
+    project: "JumpOnion x CikiBrain",
+    title: "The Framework Detected Its Own Failure — Then Fixed Itself",
+    scenario:
+      "During V1 launch sprint, tool-switching frequency jumped from 1-2/day to 10+/day. The cross-tool handoff protocol — designed for low-frequency switches — collapsed. 10 handoff notes per day became noise instead of signal. AGENTS.md fell 11 days behind. Verification debt became invisible across tools.",
+    rule:
+      "Self-Healing Framework — the SOP's built-in audit tool (autoresearch) detected three simultaneous failure signals, traced them to a single root cause (missing aggregation mechanism), and generated a structured fix.",
+    withoutSOP:
+      "Protocol degrades silently under pressure. Documents go stale, handoffs get skipped, quality checks are bypassed. The developer only discovers the damage when a downstream session acts on outdated information — by then, hours of work are wasted.",
+    result:
+      "Created CURRENT-STATE.md as a rolling single source of truth. Simplified wrap-up from 10 steps to 3 (CURRENT-STATE → HOME.md → /session end). Added startup cross-check gate (git log timestamp vs CURRENT-STATE). Handoff notes deprecated to audit logs.",
+    punchline:
+      "Your workflow will break under pressure. The question is: who repairs it? Most workflows need the human to notice. This one diagnoses, proposes, and fixes itself.",
   },
 ];
