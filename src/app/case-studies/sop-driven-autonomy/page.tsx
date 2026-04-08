@@ -101,7 +101,7 @@ const evidenceTable = [
   },
   {
     case: "Suggested session wrap-up",
-    project: "SmartLearning",
+    project: "IvyBloom",
     appeared: "Sense timing",
     drivenBy: "Phase 6 completion criteria",
   },

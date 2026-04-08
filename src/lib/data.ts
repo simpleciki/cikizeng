@@ -69,7 +69,7 @@ export const projects: Project[] = [
   },
   {
     id: "smartlearning",
-    name: "SmartLearning",
+    name: "IvyBloom",
     tagline: "AI Adaptive Learning Platform",
     problem:
       "Homeschool parents spend thousands on curriculum but still can't tell if their child truly mastered the material. When it's time to apply to schools, collecting and organizing learning records is expensive, exhausting, and the results are never good enough.",
@@ -77,7 +77,7 @@ export const projects: Project[] = [
       "One platform that handles it all: AI-adaptive lessons that adjust to each child in real-time, MAP-calibrated assessments that track true mastery, and a Portfolio builder that turns months of learning into polished application-ready records. Worry-free for parents.",
     status: "V2.8 Beta — live",
     stack: ["Next.js", "Supabase", "Stripe", "OpenAI"],
-    url: "https://smartlearning.cikizeng.com",
+    url: "https://ivybloom.app",
     accent: "#F7F1FF",
   },
   {
@@ -429,17 +429,17 @@ export const caseStudies: CaseStudy[] = [
   {
     id: "cross-project-knowledge-transfer",
     date: "2026-04-06",
-    project: "JumpOnion × SmartLearning",
+    project: "JumpOnion × IvyBloom",
     title: "One Project's Fix Became Every Project's Standard — In 3 Minutes",
     scenario:
-      "SmartLearning added a Terms of Service consent checkbox to all Stripe Checkout flows. Later that day, a JumpOnion session started. Ciki asked: 'Should the payment link add this too?'",
+      "IvyBloom added a Terms of Service consent checkbox to all Stripe Checkout flows. Later that day, a JumpOnion session started. Ciki asked: 'Should the payment link add this too?'",
     rule:
-      "Startup Protocol — read the HOME.md hub dashboard first. The SmartLearning row said 'Added ToS consent checkbox to all Stripe Checkout flows' — specific enough to act on immediately.",
+      "Startup Protocol — read the HOME.md hub dashboard first. The IvyBloom row said 'Added ToS consent checkbox to all Stripe Checkout flows' — specific enough to act on immediately.",
     withoutSOP:
       "The AI would treat it as a brand-new requirement: research Stripe docs, list pros and cons, ask Ciki to decide. No awareness that the exact same problem was already solved hours ago in another project.",
     result:
-      "The AI cited the SmartLearning precedent directly, recommended 'add it for consistency,' and provided the exact code. One word: 'add it.' One line changed, tests passed, deployed. Question to production in under 3 minutes, zero research, zero rework.",
+      "The AI cited the IvyBloom precedent directly, recommended 'add it for consistency,' and provided the exact code. One word: 'add it.' One line changed, tests passed, deployed. Question to production in under 3 minutes, zero research, zero rework.",
     punchline:
-      "SmartLearning solved it \u2192 HOME.md recorded it \u2192 JumpOnion\u2019s agent read it \u2192 Ciki said one word \u2192 deployed. Four projects, one knowledge network. That\u2019s not documentation \u2014 that\u2019s compound leverage.",
+      "IvyBloom solved it \u2192 HOME.md recorded it \u2192 JumpOnion\u2019s agent read it \u2192 Ciki said one word \u2192 deployed. Four projects, one knowledge network. That\u2019s not documentation \u2014 that\u2019s compound leverage.",
   },
 ];
