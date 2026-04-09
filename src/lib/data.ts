@@ -63,7 +63,7 @@ export const projects: Project[] = [
     value:
       "Upload a video, get AI-powered biomechanical diagnosis: pre-rotation detection, severity measurements against performance targets, and personalized training plans with 54 drills across 7 categories. What takes a human 30 minutes takes JumpOnion 60 seconds.",
     status: "Live — V1.3+, 1000+ tests passing",
-    stack: ["Next.js", "Render", "Vercel", "R2", "Modal", "Supabase", "Stripe", "LLM"],
+    stack: ["Next.js", "Render → Railway", "Vercel", "R2", "Modal", "Supabase", "Stripe", "LLM"],
     url: "https://jumponion.com",
     accent: "#EBF9FF",
   },
