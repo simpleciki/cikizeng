@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { AnimateIn } from "@/components/ui/animate-in";
 import { projects, sunnyInvoicesNote } from "@/lib/data";
 
@@ -53,6 +54,12 @@ export default function ProjectsPage() {
                     className="text-xs font-semibold text-[#2D2D2D] underline underline-offset-4 hover:text-[#6FC2FF] transition-colors">
                     Visit &rarr;
                   </a>
+                )}
+                {project.sampleHref && (
+                  <Link href={project.sampleHref}
+                    className="text-xs font-semibold text-[#2D2D2D] underline underline-offset-4 hover:text-[#6FC2FF] transition-colors">
+                    {project.sampleLabel ?? "See sample"} &rarr;
+                  </Link>
                 )}
               </div>
               <p className="text-sm text-muted-foreground mb-6">{project.tagline}</p>

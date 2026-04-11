@@ -48,6 +48,8 @@ export type Project = {
   status: string;
   stack: string[];
   url?: string;
+  sampleHref?: string; // optional internal link to a public sample/demo page
+  sampleLabel?: string; // optional label for sample link, e.g. "See live sample"
   restricted?: boolean;
   restrictedNote?: string;
   accent: string; // pastel bg color per card (MotherDuck style)
@@ -65,6 +67,8 @@ export const projects: Project[] = [
     status: "Live — V1.3+, 1000+ tests passing",
     stack: ["Next.js", "Render → Railway", "Vercel", "R2", "Modal", "Supabase", "Stripe", "LLM"],
     url: "https://jumponion.com",
+    sampleHref: "/jumponion-sample",
+    sampleLabel: "See live sample",
     accent: "#EBF9FF",
   },
   {
