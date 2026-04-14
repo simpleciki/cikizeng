@@ -10,7 +10,7 @@ export const siteConfig = {
 
 export const stats = [
   { value: "4", label: "Products Shipped" },
-  { value: "1000+", label: "Tests" },
+  { value: "1050+", label: "Tests" },
   { value: "22", label: "Case Studies" },
   { value: "10", label: "Enforcement Hooks" },
 ];
