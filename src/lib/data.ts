@@ -11,7 +11,7 @@ export const siteConfig = {
 export const stats = [
   { value: "4", label: "Products Shipped" },
   { value: "1000+", label: "Tests" },
-  { value: "17", label: "Case Studies" },
+  { value: "22", label: "Case Studies" },
   { value: "10", label: "Enforcement Hooks" },
 ];
 
@@ -220,6 +220,15 @@ export type BlogPost = {
 };
 
 export const blogPosts: BlogPost[] = [
+  {
+    slug: "day-2-first-detection-attempt",
+    title: "Day 2: 6.47 Seconds of Air Time (The Jump Lasted 0.7)",
+    date: "2026-04-13",
+    excerpt:
+      "The first attempt at detecting a figure skating jump measured 6.47 seconds of air time — on a jump that lasted 0.7 seconds. Three failed approaches, then the system rescued itself.",
+    readTime: "7 min",
+    tags: ["JumpOnion", "AI Engineering", "Debugging"],
+  },
   {
     slug: "day-1-building-figure-skating-ai",
     title: "Day 1: Building a Figure Skating AI — Why I Started",
@@ -515,5 +524,85 @@ export const caseStudies: CaseStudy[] = [
       "Created CURRENT-STATE.md as a rolling single source of truth. Simplified wrap-up from 10 steps to 3 (CURRENT-STATE → HOME.md → /session end). Added startup cross-check gate (git log timestamp vs CURRENT-STATE). Handoff notes deprecated to audit logs.",
     punchline:
       "Your workflow will break under pressure. The question is: who repairs it? Most workflows need the human to notice. This one diagnoses, proposes, and fixes itself.",
+  },
+  {
+    id: "session-continuity-drift",
+    date: "2026-04-10",
+    project: "CikiBrain",
+    title: "AI Caught 3 Times in One Session — Same Root Cause",
+    scenario:
+      "In a 10+ hour marketing strategy session, the AI was loaded with all project context at startup. Hours later, it asked 'Do you have a landing page?' — about a site already in production. Then suggested building a 'free trial' — for a product already live with paid subscribers. Then warned about '$500+ API cost risk' — when the actual 10-day bill was $1.73.",
+    rule:
+      "Stale Context Prevention — session-start fact loading must be reinforced mid-session. Default AI training narratives ('solo founders need free trials', 'API costs spiral') override loaded facts after enough conversation turns.",
+    withoutSOP:
+      "Following the AI's three suggestions would have consumed ~10 days building features that contradicted the product's existing strategy — a waitlist for a live product, free trial for a premium positioning, and emergency cost controls for a $0.17/day API bill.",
+    result:
+      "All three drifts were caught by the human partner using the Challenge Protocol. Root cause identified: AI training defaults override session-specific facts in long conversations. Led to the Fact-Echo Gate — mandatory state confirmation before any strategic recommendation.",
+    punchline:
+      "Your AI loaded the context. It confirmed it read the docs. And it still told you to build a waitlist for a product that's already live. Reading ≠ remembering.",
+  },
+  {
+    id: "pipeline-breakage-forensics",
+    date: "2026-04-11",
+    project: "CikiBrain",
+    title: "A Gut Feeling Became a 4-File Fix in 90 Minutes",
+    scenario:
+      "No error log. No stack trace. Just a feeling: 'Something is off — sessions are disconnected, wrap-ups are getting skipped, project truth is scattered everywhere.' The investigation had to start from a vague sense of system degradation.",
+    rule:
+      "Root-Cause-First + Autoresearch — decompose a vague feeling into 5 falsifiable hypotheses, then test each against physical evidence (file timestamps, directory counts, config diffs).",
+    withoutSOP:
+      "The session memory pipeline would have stayed silently broken for weeks. Every new session would start without context from the previous one. Eventually, trust in the entire SOP framework would collapse — not from a dramatic failure, but from slow, invisible decay.",
+    result:
+      "Physical evidence scan revealed a cliff: session archives dropped from 63/month to 2/month on a precise date. Cross-referencing with the changelog found the root cause — a hook was orphaned during a skill consolidation 10 days prior. Four files fixed, all with retirement conditions.",
+    punchline:
+      "A feeling became an evidence chain became a 4-file fix. That's what a working second brain looks like.",
+  },
+  {
+    id: "beginner-fall-overcall",
+    date: "2026-04-12",
+    project: "JumpOnion",
+    title: "AI Called a Normal Landing a 'Fall' — 4-Layer Fix",
+    scenario:
+      "A beginner skater's double Axel was diagnosed as a 'fall' with severity 4. In reality, the deep knee bend after landing was normal absorption biomechanics for a young skater — not a fall. The AI had never seen a beginner's landing before.",
+    rule:
+      "Zero Misdiagnosis Principle + Root-Cause-First — don't patch the symptom (adjust one threshold). Run ablation experiments to find the real cause. Prompt-level fixes require full regression validation before deployment.",
+    withoutSOP:
+      "A quick prompt tweak might fix the beginner's case but break fall detection for real falls. Without ablation experiments ($1 API cost), the team would have guessed at the fix and potentially shipped a regression.",
+    result:
+      "Ablation experiments across 4 pipeline variants revealed the real issue: LLM non-determinism on borderline cases, amplified by apex frame visual contrast. Four-layer fix: body-contact gate in prompt, apex frame removal, raw frame persistence for debugging, and regression harness upgrade. 15/15 samples passing, real falls still detected.",
+    punchline:
+      "The AI saw a deep knee bend and called it a fall. We didn't just fix the label — we rewired the entire diagnosis pipeline so it can never confuse absorption with failure again.",
+  },
+  {
+    id: "protocol-self-healing-notion",
+    date: "2026-04-12",
+    project: "CikiBrain",
+    title: "One Question Upgraded the Entire Wrap-Up Protocol",
+    scenario:
+      "A simple question during a session: 'How does the project dashboard get updated when a session ends?' The answer: it doesn't. The wrap-up protocol had 3 steps, none of which included syncing the dashboard that the human actually checks every day.",
+    rule:
+      "Challenge Protocol — the question wasn't a complaint, it was a system design challenge. Combined with Minimal Fix First — don't build a new tool, add one step to the existing protocol.",
+    withoutSOP:
+      "The project dashboard would remain permanently stale. The human would see outdated status every morning, losing trust in the system's accuracy. Backlog items would be invisible — only tasks the AI chose to mention would be visible.",
+    result:
+      "Wrap-up protocol upgraded from 3 steps to 4. A new backlog tracker was created with 25 items and 3 views. Every session now automatically syncs project status, backlog deltas, and weekly summaries to the dashboard.",
+    punchline:
+      "Your SOP shouldn't be a document you write and forget. It should be a living system — when you find a blind spot, 30 minutes upgrades it, and every future session benefits automatically.",
+  },
+  {
+    id: "competitive-validation-zero-adoption",
+    date: "2026-04-13",
+    project: "CikiBrain",
+    title: "53K GitHub Stars — We Adopted Zero",
+    scenario:
+      "A popular open-source AI memory tool exploded to 53K GitHub stars, promising '90% token savings.' The temptation: install it immediately. Instead, a structured 10-dimension competitive analysis was triggered — lifecycle hooks, storage, retrieval, compression, token efficiency, search, security, dependencies, information decay, and commercial viability.",
+    rule:
+      "Search Before You Build + Buy > Build (with ROI) — evaluate before adopting. Don't let star counts substitute for architectural analysis. 53K stars doesn't mean 53K people got the right solution — it means 53K people had the same problem.",
+    withoutSOP:
+      "Installing a tool with 53K stars feels safe. But it would have introduced 4 critical security vulnerabilities, added 5 external dependencies, and — according to user reports — could actually increase token consumption rather than reduce it.",
+    result:
+      "Decision: zero adoption. The only concept worth borrowing — automatic session summaries — was implemented in 30 minutes with zero API cost and zero new dependencies. The existing architecture already outperformed the popular tool on 8 of 10 dimensions.",
+    punchline:
+      "53K stars means 53K people screaming 'my AI memory is broken.' We never had that problem — because the architecture was right from day one.",
   },
 ];
