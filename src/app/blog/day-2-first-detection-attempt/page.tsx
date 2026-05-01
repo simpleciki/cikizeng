@@ -250,8 +250,9 @@ export default function Day2Page() {
           </p>
 
           <p className="mt-4 text-muted-foreground">
-            Next: Day 3 — the AI told a world champion his jump was wrong.
-            The system caught it before any user saw it.
+            Next: Day 3 — months later, the AI confidently deleted production
+            code labeled &quot;dead.&quot; 987 tests passed. The deploy went green.
+            Thirty hours later, a paying customer noticed.
           </p>
         </article>
       </AnimateIn>

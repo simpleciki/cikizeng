@@ -10,8 +10,8 @@ export const siteConfig = {
 
 export const stats = [
   { value: "4", label: "Products Shipped" },
-  { value: "1050+", label: "Tests" },
-  { value: "22", label: "Case Studies" },
+  { value: "2050+", label: "Tests" },
+  { value: "36", label: "Case Studies" },
   { value: "10", label: "Enforcement Hooks" },
 ];
 
@@ -220,6 +220,15 @@ export type BlogPost = {
 };
 
 export const blogPosts: BlogPost[] = [
+  {
+    slug: "day-3-when-ai-lied-about-dead-code",
+    title: "Day 3: When AI Lied About Dead Code (30 Hours of Silent Failures)",
+    date: "2026-04-14",
+    excerpt:
+      "My AI partner deleted production code with absolute confidence and labeled it 'dead code, anonymous uploads.' 987 tests passed. The deploy went green. Thirty hours later, a paying customer noticed.",
+    readTime: "8 min",
+    tags: ["JumpOnion", "AI Engineering", "Post-Mortem"],
+  },
   {
     slug: "day-2-first-detection-attempt",
     title: "Day 2: 6.47 Seconds of Air Time (The Jump Lasted 0.7)",
@@ -604,5 +613,229 @@ export const caseStudies: CaseStudy[] = [
       "Decision: zero adoption. The only concept worth borrowing — automatic session summaries — was implemented in 30 minutes with zero API cost and zero new dependencies. The existing architecture already outperformed the popular tool on 8 of 10 dimensions.",
     punchline:
       "53K stars means 53K people screaming 'my AI memory is broken.' We never had that problem — because the architecture was right from day one.",
+  },
+  {
+    id: "graduated-memory-not-enforced",
+    date: "2026-04-14",
+    project: "JumpOnion",
+    title: "The Anti-Pattern Lived in Memory — The AI Walked Right Into It Again",
+    scenario:
+      "While shipping a new feature, the AI added three columns to a database table and updated the read code. A paying user immediately reported: feature still doesn't work. Root cause: a hardcoded SELECT column list silently dropped the new columns. The function returned the user's profile minus the very fields the new feature needed.",
+    rule:
+      "Bug Confession + Memory Enforcement Gap — the same anti-pattern (manual column lists silently dropping new fields) had already been graduated to feedback memory weeks earlier. The memory existed. The AI loaded it at session start. It still didn't trigger when the matching code change happened.",
+    withoutSOP:
+      "Without rapid user feedback, the bug would have stayed silent for days or weeks — every grant of the new permission was a no-op. The admin path bypassed the broken code, so internal testing wouldn't catch it. The first sign would have been a paying customer's escalation.",
+    result:
+      "Forty minutes from user report to root cause to deploy. The deeper finding: graduated memory ≠ enforced rule. Memory files are loaded passively at session start and get squeezed out by long-session context drift. Anti-patterns that matter need to descend into hooks (event-triggered enforcement), not stop at memory (best-effort recall). A new hook candidate was queued: pre-edit memory enforcer that scans target files against feedback keywords.",
+    punchline:
+      "If the rule isn't enforced in code, it's a wish — and wishes have a non-zero failure rate.",
+  },
+  {
+    id: "ai-dead-code-label-outage",
+    date: "2026-04-14",
+    project: "JumpOnion",
+    title: "AI Labeled Production Code 'Dead' — 30 Hours of Silent Upload Failures",
+    scenario:
+      "During a security audit, the AI deleted a route mount in the backend and labeled it confidently in the commit message: 'dead code, anonymous uploads.' It was not dead code. It was the active upload pipeline. 987 unit tests passed because no test asserted the route's existence. The deploy succeeded. Thirty hours later, a paying customer reported uploads silently failing.",
+    rule:
+      "Verification Before Completion + Caller Audit — any deletion commit that uses confident labels ('dead code', 'legacy', 'unused') must include grep-evidence of caller checks. The AI's high-confidence language is a trust signal in human review — and a hidden attack surface when unverified.",
+    withoutSOP:
+      "The 30-hour silent failure could have stretched to days. The route was being used by every video upload from the frontend. Every paying customer's upload silently 404'd. Worse: a follow-up audit added a security gate to the same already-unmounted route — putting a lock on a dismantled door.",
+    result:
+      "Root cause located in five minutes once symptoms were investigated: a single curl against the upload health endpoint returned 404, while the main health endpoint returned 200. Three-layer fix shipped: re-mount the route, add a critical-routes registry test (16 routes that must exist), and add a 15-minute runtime smoke check via cron. New rule entered the SOP: AI commit messages with 'dead code' labels must include caller-audit evidence in the body.",
+    punchline:
+      "AI confidence is not evidence. The more polished the label, the more it deserves to be questioned.",
+  },
+  {
+    id: "one-line-context-correction",
+    date: "2026-04-14",
+    project: "JumpOnion",
+    title: "26 Characters Saved Two Hours of Rework",
+    scenario:
+      "Three hours into a session, the AI proposed a design question based on a wrong premise: 'You don't sell the L3 plan yet, so admin = full access?' L3 had been live for weeks. Pricing, Stripe price ID, and quota were all already configured in code — one grep away.",
+    rule:
+      "Founder Override + Fact-Echo Gate — when the AI hallucinates project state mid-session, the human founder's correction cost is a sentence. The AI's verification cost is a single grep. The asymmetry makes 'interrupt and correct' the highest-leverage defense layer.",
+    withoutSOP:
+      "Best case: 30 minutes of rework after the wrong premise propagated into the design. Middle case: a downstream paywall bug locks paying users out of a feature they paid for. Worst case: a customer complaint reveals the broken paywall before internal testing does.",
+    result:
+      "The founder interrupted with three actions in one sentence: question, fact assertion, demand to recheck. The AI acknowledged the drift, ran the grep, returned with the correct config, and wrote a feedback memory: any pricing-tier claim must be preceded by a grep against the config file. From wrong premise to corrected and persisted in under two minutes.",
+    punchline:
+      "Long sessions drift. The cheapest defense is a partner willing to say 'wait, that's wrong' — and a system that turns the correction into a permanent rule.",
+  },
+  {
+    id: "hermes-89k-stars-selective-adoption",
+    date: "2026-04-15",
+    project: "SOP Framework",
+    title: "89K Stars — Adopted 3 Ideas, Rejected 3",
+    scenario:
+      "An open-source AI agent framework went viral with 89K GitHub stars, promising 'self-evolution' through a genetic algorithm that mutates skills and prompts automatically. The temptation: install it. The alternative: a structured 5-dimension comparison against the existing system across memory, skills, self-evolution, behavior enforcement, and cross-tool collaboration.",
+    rule:
+      "Search Before You Build + Buy > Build (with ROI) — evaluate before adopting. Rather than 'use or ignore,' the question becomes: which specific ideas are worth zero-cost porting?",
+    withoutSOP:
+      "Default move would be either full adoption (replacing a working system to chase a hot brand) or full dismissal (missing genuinely useful patterns out of pride). Both options would have been wrong. Genetic-algorithm self-mutation in a one-person company means unreviewed automatic PRs touching production rules — a near-certain way to break things silently.",
+    result:
+      "Three ideas adopted at zero cost: automatic skill solidify suggestions at session end, JSONL-based failure mode analysis, and mid-session lightweight checkpoints. Three ideas explicitly rejected: full genetic mutation (no review capacity), public skill marketplace (skills are commercial assets), automatic user profiling (only one user). The existing system still wins on governance: hooks, retire-if rules, and case study pipelines have no equivalent in the popular framework.",
+    punchline:
+      "Star counts measure how many people had the same problem. They don't measure whether the solution fits yours.",
+  },
+  {
+    id: "admin-ghost-masks-role-bugs",
+    date: "2026-04-15",
+    project: "JumpOnion",
+    title: "Admin Ghost Login Hid 8 Broken Endpoints for 48 Hours",
+    scenario:
+      "A new role-based feature shipped with 8 coach-only write endpoints. Internal testing used 'admin ghost login' — viewing the app as another user via an admin shortcut. All 8 endpoints had a typo in their hardcoded SELECT column list referencing fields that didn't exist in the schema. Every real coach session would 500. Internal testing never went through the coach code path.",
+    rule:
+      "Role-Based Testing Discipline — admin ghost login carries the user's ID through user-facing endpoints, not through role-restricted endpoints. It can't substitute for a real account in the new role. Role-restricted features need an independent account smoke test before launch.",
+    withoutSOP:
+      "Discovery would have happened in front of three high-stakes coaches at a scheduled product demo 48 hours later. The first coach to click 'Save' would have hit a 500 error. The pitch would have collapsed. Trust with a key referral channel: gone.",
+    result:
+      "A real coach trying the system in person triggered the bug 48 hours before the demo. Schema-aligned column names shipped, plus a humanized error banner that turns silent 500s into visible failures. New SOP: any role-restricted feature requires a real-account smoke test before launch, plus integration tests using the target role's real JWT — not an admin ghost.",
+    punchline:
+      "The cheapest testing shortcut buys you the most expensive production failure.",
+  },
+  {
+    id: "ui-button-vs-algorithm-contract",
+    date: "2026-04-15",
+    project: "JumpOnion",
+    title: "A Button Name Killed an Algorithm's Precision",
+    scenario:
+      "After a month of iterating the jump detection algorithm from v1 to v3 — tightening thresholds, adding physics constraints, hitting calibration accuracy — a real parent uploaded a video and got a 1.2-second air-time reading on a jump that physically maxes out at 0.85 seconds. The algorithm's calibration set was solid. The fix wasn't in the algorithm at all.",
+    rule:
+      "UI as a Contract — the literal text on a button is a promise to the user about what input the system expects. The button said 'Set Takeoff' and 'Set Landing.' The algorithm's hidden contract required the clip to include on-ice frames before takeoff and after landing. When buttons say one thing and algorithms expect another, the user follows the buttons — and the algorithm receives the wrong input.",
+    withoutSOP:
+      "The team would have continued tuning algorithm parameters — adjusting thresholds, adding smoothing — chasing precision in code that wasn't broken. Real users would keep uploading 'as instructed' and getting impossible results. The conclusion 'this product is unreliable' would have spread through the user community before anyone realized the buttons were the bug.",
+    result:
+      "A single commit fixed the buttons (Set Takeoff → Set Clip Start, plus '~0.5s before takeoff' subtext), added a quality band to the trim UI, and updated the upload guide modal with a visual showing the required clip structure. Algorithm code untouched — its contract was never wrong. The new rule: every domain-term button must be tested against the algorithm's hidden assumptions, and the calibration set must include 'mistakes a real user would make' — not just clean inputs.",
+    punchline:
+      "A precise algorithm fed by a misleading button produces precise nonsense.",
+  },
+  {
+    id: "drill-unlock-schema-drift",
+    date: "2026-04-15",
+    project: "JumpOnion",
+    title: "23 Tests Passed — Every Paying User Was Locked Out",
+    scenario:
+      "A paying customer reported that every drill click in their training plan returned 402 Payment Required. The drill access function read a JSON cache key at the root level — but the actual persisted shape, since a recent bilingual migration, nested the data two levels deeper under jump-type and locale keys. The 23 unit tests for this function used the old flat shape that production had stopped writing weeks ago.",
+    rule:
+      "Root-Cause-First on Pipelines + Evidence-Backed Verification — three SQL probes against the actual production data confirmed the schema mismatch in 5 minutes, before a single line of code was touched. Tests that mock a different shape than production writes are theater, not verification.",
+    withoutSOP:
+      "Default reaction: 'maybe their subscription is frozen?' or 'maybe the drill asset URL is broken?' — guessing categories that have nothing to do with the actual bug. With backward-compat shortcuts, the fix would have shipped without supporting legacy data. With test fixtures continuing to mock a non-existent shape, the next schema migration would silently break the same way.",
+    result:
+      "Fix shipped in one commit with a path-walker that handles bilingual, legacy bare-key, legacy flat, and weekly_plan shapes. Five new unit tests added, each loading fixtures that match what production actually writes. Every affected user (every paying user, not just the one who reported) recovered drill access on their next request — no manual backfill needed. This was the third mock/prod fixture divergence in two weeks; a new rule candidate queued: integration tests for any function reading JSON columns must use real production shape samples.",
+    punchline:
+      "Tests that mock the wrong shape don't fail. They lie.",
+  },
+  {
+    id: "overlay-erases-llm-detail",
+    date: "2026-04-17",
+    project: "JumpOnion",
+    title: "The Safety Net That Erased the LLM's Best Output",
+    scenario:
+      "A coach tagged a jump with three labels matching the LLM's diagnosis exactly. The LLM had produced a detailed coach summary with frame-level evidence ('blade contacts ice approximately 90° short at frame 16'), biomechanical reasoning, and three concrete athlete cues. The coach-tag overlay layer detected serious-negative tags and triggered a template rewrite — replacing the LLM's rich text with a generic boilerplate translation of the tag list.",
+    rule:
+      "Conflict Detection Before Rewrite — a safety overlay designed to prevent LLM hallucination should not fire when the LLM and the coach are aligned. The overlay's job is to handle conflict, not to flatten everything into a template by default.",
+    withoutSOP:
+      "Every coach review of an aligned diagnosis would silently downgrade the output to a template. Parents would see less detail the more careful the coaching review was. The product's competitive edge — frame-level citation and biomechanical reasoning from the LLM — would be erased exactly when senior coaches were involved. The signal 'more review = less content' would invert user expectation.",
+    result:
+      "The overlay logic was rewritten to detect conflict explicitly: fall-unclaimed, takeoff-conflict, landing-conflict, scrubbed-by-guard, no-narrative. Only conflict triggers template rewrite. Aligned cases preserve the LLM's full output and append the coach's observations as additional context. New tests verify both protective rewrites (when needed) and aligned preservation (when not).",
+    punchline:
+      "A safety net that erases your best work isn't a safety net. It's a ceiling.",
+  },
+  {
+    id: "destructive-sql-scope-creep",
+    date: "2026-04-17",
+    project: "JumpOnion",
+    title: "AI Wiped 20 Customer Diagnoses While 'Fixing' a Cache",
+    scenario:
+      "After locating the real production blocker — a model file gitignored in deployment, leaving rotation metrics dark for weeks — the AI proceeded to invalidate stale cached results. The mental model was 'reset cache so it can repopulate.' The SQL nullified three independent caches in one statement: the analytics cache (correctly stale), the diagnosis cache (independent of the bug), and the training plan cache (also independent). 20 rows updated. 7 paying customers' personalized diagnosis text and training plans wiped — not recoverable from the call log because LLM output text wasn't persisted there.",
+    rule:
+      "Cache Invalidation Minimum-Blast + Destructive SQL Preview — never NULL a derived cache unless that specific cache's upstream input changed. Any UPDATE/DELETE touching multiple production customer rows must first run the equivalent SELECT, surface affected user emails, and get explicit human approval before executing.",
+    withoutSOP:
+      "If the founder hadn't noticed within minutes, the bet would have been: 'the model regenerates similar enough text on retry that no one files a complaint.' That's a bet no one should take with paying customer data. Worse: without the existing audit log identifying exactly which 20 tasks were affected, recovery would have been impossible.",
+    result:
+      "Same-day notification to 7 affected customers, regenerated diagnoses at no cost. Two new rules entered the SOP: (1) cache invalidation must follow upstream-dependency rules (pose change → only analytics cache; prompt change → only diagnosis cache); (2) any destructive SQL on multi-row production data requires SELECT-preview + explicit founder approval before execution. A new column was added to the LLM call log persisting output text, so the next 'cache wiped' incident is recoverable from the log alone.",
+    punchline:
+      "Founder absorbs the risk, customer absorbs the value. Single-founder SaaS isn't about never breaking — it's about blast-radius-aware recovery.",
+  },
+  {
+    id: "cross-tool-signal-gap",
+    date: "2026-04-21",
+    project: "SOP Framework",
+    title: "Two AI Tools Followed the Rules — The System Drifted Anyway",
+    scenario:
+      "Across one afternoon, eight AI sessions ran through a secondary tool, each correctly updating the project's rolling state file. None of them touched the central dashboard — by design. The primary tool's contract was: read the dashboard, sync to it, push to the project tracker. Result: dashboard 5 hours stale. Project tracker 2 days stale. 26 commits and two architecture milestones invisible to the human partner watching the dashboard.",
+    rule:
+      "Cross-Tool Handoff Signal Gap — node-level compliance does not guarantee system-level compliance when no signal channel exists between nodes. Both tools were correct in isolation. The handoff between them was the failure mode.",
+    withoutSOP:
+      "Default fix: 'remind the primary tool not to skip dashboard sync.' This addresses one symptom (sync skipped) without addressing the deeper one (the secondary tool runs in between and the primary tool has no way to know that work happened). The drift would silently return.",
+    result:
+      "Two-sided fix: the secondary tool now writes a signal flag (home_sync_pending) into the rolling state file's frontmatter at session end. The primary tool now checks that flag at session start and back-fills the dashboard before doing any new work. The boundary stays the same — the secondary tool still doesn't sync the dashboard — but the missed work no longer disappears between handoffs.",
+    punchline:
+      "Multi-tool AI workflows fail at the seams, not the nodes. The cure is signals, not stricter rules.",
+  },
+  {
+    id: "four-line-evidence-scan",
+    date: "2026-04-22",
+    project: "SOP Framework",
+    title: "User Cried Contamination — Four Lines of Evidence Said Zero",
+    scenario:
+      "Session opened with the founder's worry: 'I just did Project A's work in Project B by accident, in a different tool. Please scan to see if my SOP protected me.' Subjective alarm. The default response would be either reassurance or a panicked cleanup script — both wrong without evidence.",
+    rule:
+      "Four-Line Evidence Cross-Check — user worry triggers a structured scan, not action. (1) Git logs and working trees in both repos; (2) cross-project keyword grep; (3) cross-tool session metadata; (4) session archive frontmatter. Conclusions only after four lines agree.",
+    withoutSOP:
+      "Worst case: trust the worry, run a cleanup script that deletes legitimate project content matching common keywords. Cross-project pollution from the cure, not the disease. Better case but still bad: reassure without evidence — the worry returns, and trust in the SOP doesn't grow.",
+    result:
+      "Five minutes of evidence: zero contamination. The other tool's working directory was correctly locked to Project A throughout. The user's earlier panicked rollback in Project B (driven by the same worry) turned out to be unnecessary — but caused no harm. New standard procedure: any 'I think I contaminated something' worry triggers the four-line scan before any cleanup. A reusable template was distilled from this session and added to the global rules.",
+    punchline:
+      "AI collaboration's scariest moment isn't an actual mistake — it's thinking you made one. Evidence beats intuition. Both ways.",
+  },
+  {
+    id: "routing-fork-invisible-to-spec",
+    date: "2026-04-24",
+    project: "JumpOnion",
+    title: "One SQL Query Saved Two Hours of Wrong-Path Debugging",
+    scenario:
+      "A major rewrite shipped. 2,082 tests passing. The founder hit 'regenerate' on a real task and the result came back in 3 seconds — way too fast for the new LLM path that should take 50–60 seconds. Default reaction would be: 'maybe the cache hit, try again.' Or: 'maybe the new code is faster than expected, ship it.'",
+    rule:
+      "Smoke Tests Trust DB Audit Fields, Not UI Feel — when rewritten code's production behavior doesn't match expectations, the first check is the audit field that records which code path actually ran, not the output content. UI 'feel' (fast, slow, looks right) is ambiguous; an audit row tagged with model name and prompt revision is unambiguous.",
+    withoutSOP:
+      "An hour of prompt tuning, convinced the new model was producing weak output. Then deeper code reads, more test runs. The actual problem — a feature flag enabled in production routing the request to a parallel deterministic builder, completely bypassing the new code — would have stayed hidden until a teammate said 'wait, did anyone delete the v0 dispatcher branch?'",
+    result:
+      "A single SQL query against the audit table revealed the truth: the task's training plan came from a deterministic rules builder that another tool's session had wired up days earlier. The rewrite spec had grepped to the wrong level — looking at the entry function, missing the dispatcher fork above it. One Edit removed the fork. Next smoke ran the new path correctly. The deprecated builder's 14,652 lines were deleted in the next sweep. Total debug time: 15 minutes.",
+    punchline:
+      "When code behaves wrong, ask the database what it actually did. UI guesses. Audit fields know.",
+  },
+  {
+    id: "platform-app-timeout-asymmetry",
+    date: "2026-04-24",
+    project: "JumpOnion",
+    title: "The LLM Succeeded — The Platform Killed the Connection First",
+    scenario:
+      "First production smoke of a new LLM training plan endpoint. The browser request hung for a minute, then returned 504 Gateway Timeout. A manual page refresh: the new plan was already there, generated and saved. From the backend's view, everything was fine. From the user's view, it failed.",
+    rule:
+      "Platform Timeout < App Timeout — every deploy platform has gateway timeouts shorter than what the app's own timeout config admits. App-level retries don't help when the gateway killed the client connection before the server finished responding. The audit log table caught what nothing else would have: the call succeeded in 59.3 seconds, against a hidden 60-second platform ceiling.",
+    withoutSOP:
+      "Default debugging path: bump app timeout to 120s, add retry logic, blame the LLM provider. None of those would have helped — the platform ceiling was already lower than any of them. A real customer paying for plan generation would see 'failed' and never refresh, treating it as a billing error.",
+    result:
+      "Two parallel small fixes: (1) backend slim prompt — removed display-only fields the LLM was reasoning about unnecessarily, dropping input from 10K to 4K tokens and runtime from 59s to 50–55s, with bonus 20% cost reduction; (2) frontend AbortController plus a polling fallback that quietly fetches the cached result if the POST timed out. The user sees the plan appear, regardless of which path won. New checklist item for any sync HTTP API: measure the actual gateway timeout, design for the case where the LLM exceeds it, and persist every LLM call into an audit table from day one.",
+    punchline:
+      "Build for the gateway you have, not the gateway you wish for. And log every model call — the audit table will save you twice.",
+  },
+  {
+    id: "cwd-vs-output-ownership",
+    date: "2026-04-25",
+    project: "SOP Framework",
+    title: "The Session Said It Was JumpOnion — The Work Belonged to the Hub",
+    scenario:
+      "A session opened with the working directory set to a product project, but every file it produced lived in the global config tree — a new skill, a new hook, an updated settings file. Zero changes to the product's source. The work was real, useful, and shipped. But the wrap-up would have logged it under the wrong project. Three different hooks watched this session. None flagged the mismatch.",
+    rule:
+      "Ownership Follows Output Path, Not Working Directory — when a session's outputs live in shared territory (skills, hooks, global config), the governance owner is the hub project, regardless of where the editor was pointed. The dashboard, milestone log, and project tracker all index by ownership, not by working directory.",
+    withoutSOP:
+      "Without the rule, the session's archive would have shown 'the product project: 0 files changed' and the actual work — a new user-facing skill plus an enforcement hook — would never be recorded against the hub project. Two months later, an audit would find shipped infrastructure with no documented origin: an 'orphaned asset' problem that compounds with every misattributed session.",
+    result:
+      "The session honestly self-flagged the violation in its own outcome notes — making the case study possible at all. New rule added: when output path and working directory diverge, ownership follows output path. Both projects' dashboards updated (the working-directory project records 'no changes,' the output-path project records the actual work). A hook upgrade was queued: detect output/cwd mismatch automatically and tag the session as cross-territory.",
+    punchline:
+      "Honesty beats correctness. Sessions that admit they drifted off-course are repairable. Sessions that hide it become tomorrow's mystery commits.",
   },
 ];
