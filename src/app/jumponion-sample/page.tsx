@@ -34,11 +34,11 @@ export const metadata: Metadata = {
 // ──────────────────────────────────────────────────────────────────────────────
 
 const metrics = [
-  { label: "Air Time", value: "0.348", unit: "s", note: "target ≥ 0.40s for a clean double" },
+  { label: "Air Time", value: "0.348", unit: "s", note: "below the target band for a clean double" },
   { label: "Jump Height", value: "14.9", unit: "cm", note: "estimated from biomechanical model" },
   { label: "Takeoff Velocity", value: "1.71", unit: "m/s", note: "vertical component" },
-  { label: "Takeoff Angle", value: "46.6", unit: "°", note: "near the 45° optimal" },
-  { label: "Time to Tight", value: "0.214", unit: "s", note: "target < 0.15s for fast rotation" },
+  { label: "Takeoff Angle", value: "46.6", unit: "°", note: "near the takeoff-angle optimum" },
+  { label: "Time to Tight", value: "0.214", unit: "s", note: "slower than target for fast rotation" },
   { label: "Under-rotation", value: "82.8", unit: "°", note: "shortfall from a clean double" },
 ];
 
@@ -73,28 +73,28 @@ const evidencePoints = [
 
 const drills = [
   {
-    name: "Metronome-Synced Takeoff",
+    name: "Vertical Impulse Drill",
     sets: "3 × 8",
     timing: "Pre-Ice Activation",
-    why: "Builds consistent, explosive vertical impulse — train your body to be a precise 'human metronome' for maximum jump height.",
+    why: "Builds consistent, explosive vertical impulse — trains the body to deliver a precise, repeatable launch for maximum jump height.",
   },
   {
-    name: "Kinetic Freeze-Frame",
+    name: "Air-Position Proprioception Drill",
     sets: "3 × 8",
     timing: "Pre-Ice Activation",
-    why: "By forcing instant 'freeze-frames' in various jump positions, this drill sharpens proprioception so you can find and hold a perfectly tight axis in the air.",
+    why: "Forces instant 'freeze-frames' in various jump positions, sharpening proprioception so the skater can find and hold a tight axis in the air.",
   },
   {
-    name: "Fast Arm Pull",
+    name: "Arm-Snap Speed Drill",
     sets: "3 × 15",
     timing: "Pre-Ice Activation",
-    why: "Targets tightening speed directly. Train the arms to snap in like a retracting tape measure the instant the blade leaves the ice.",
+    why: "Targets tightening speed directly. Train the arms to snap in the instant the blade leaves the ice, shortening the time-to-tight window.",
   },
   {
-    name: "Band-Resisted Arm Snap",
+    name: "Centrifugal Resistance Drill",
     sets: "3 × 12",
     timing: "Post-Ice Strengthening",
-    why: "Builds explosive 'braking' power against centrifugal force. Essential for snapping into a super-tight air position when rotation is already loaded.",
+    why: "Builds explosive 'braking' power against centrifugal force. Essential for holding a super-tight air position once rotation is loaded.",
   },
 ];
 
@@ -203,9 +203,9 @@ export default function JumpOnionSamplePage() {
           </div>
           <SectionTitle>Computer vision measures the jump.</SectionTitle>
           <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
-            Below are the metrics from one real 2Lo upload. Pose estimation extracts 33 body
-            keypoints per frame; biomechanics turns those points into measurements that match
-            what a coach would see — but exact, repeatable, frame-by-frame.
+            Below are the metrics from one real 2Lo upload. Pose estimation tracks the skater
+            across all major joints; biomechanics turns those points into measurements that
+            match what a coach would see — but exact, repeatable, frame-by-frame.
           </p>
 
           <div
@@ -243,7 +243,7 @@ export default function JumpOnionSamplePage() {
           <SectionTitle>Rule engine measures. LLM translates.</SectionTitle>
           <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
             A deterministic rule engine compares every metric to clean-jump targets and decides
-            severity. Then Gemini 3 Pro turns that decision into language a parent and a 9-year-old
+            severity. Then an LLM turns that decision into language a parent and a 9-year-old
             can both act on. The LLM never invents numbers — it&apos;s an interpreter, not a judge.
           </p>
 
@@ -339,9 +339,13 @@ export default function JumpOnionSamplePage() {
           </div>
           <SectionTitle>The diagnosis becomes a sequence.</SectionTitle>
           <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
-            Four off-ice drills, picked from a 54-drill catalog, ordered by when they should
-            happen relative to the next ice session. Each drill explains <em>why</em> — so you know
-            what you&apos;re fixing, not just what to do.
+            Four off-ice drill categories, picked from the proprietary drill library, ordered
+            by when they should happen relative to the next ice session. Each drill explains
+            <em> why</em> — so you know what you&apos;re fixing, not just what to do.
+          </p>
+          <p className="mt-2 mb-4 text-xs italic text-muted-foreground">
+            Drill names shown here are generalized for public display — paying customers see
+            the full named drills, exact sets, and target bands inside the app.
           </p>
 
           <div className="space-y-3">
@@ -451,10 +455,10 @@ export default function JumpOnionSamplePage() {
               Why not just use Gemini directly?
             </div>
             <p className="text-sm leading-relaxed text-foreground">
-              I tested it. Gemini misclassified a 2Lz as a Toe Loop. Gemini called an imperfect
-              air position &quot;perfect&quot;. LLMs hallucinate; rule engines don&apos;t. JumpOnion uses
-              Gemini only as a translator on top of a deterministic biomechanical engine —
-              that&apos;s what makes the diagnosis trustworthy. Read the full breakdown on the{" "}
+              I tested it. A general-purpose LLM misclassified a 2Lz as a Toe Loop and called
+              an imperfect air position &quot;perfect&quot;. LLMs hallucinate; rule engines don&apos;t.
+              JumpOnion uses the LLM only as a translator on top of a deterministic biomechanical
+              engine — that&apos;s what makes the diagnosis trustworthy. Read the full breakdown on the{" "}
               <Link href="/blog" className="underline underline-offset-2 hover:text-[#1E5C7A]">
                 blog
               </Link>

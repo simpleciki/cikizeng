@@ -63,7 +63,7 @@ export const projects: Project[] = [
     problem:
       "Skaters and parents can't see what's actually wrong with a jump — so they train blind. Coaches know, but their time is expensive and limited. Without clear diagnosis, practice hours get wasted on the wrong fixes.",
     value:
-      "Upload a video, get AI-powered biomechanical diagnosis: pre-rotation detection, severity measurements against performance targets, and personalized training plans with 54 drills across 7 categories. What takes a human 30 minutes takes JumpOnion 60 seconds. Real paying customers, recurring revenue verified end-to-end.",
+      "Upload a video, get AI-powered biomechanical diagnosis: pre-rotation detection, severity measurements against performance targets, and a personalized off-ice drill library matched to the diagnosis. What takes a human 30 minutes takes JumpOnion 60 seconds. Real paying customers, recurring revenue verified end-to-end.",
     status: "Release 1 LIVE — Stripe paid subscriptions, first auto-renewal verified clean",
     stack: ["Next.js", "Railway", "Vercel", "R2", "Modal", "Supabase", "Stripe", "LLM"],
     url: "https://jumponion.com",
@@ -78,7 +78,7 @@ export const projects: Project[] = [
     problem:
       "Homeschool parents spend thousands on curriculum but still can't tell if their child truly mastered the material. When it's time to apply to schools, collecting and organizing learning records is expensive, exhausting, and the results are never good enough.",
     value:
-      "One platform that handles it all: 45+ AI modules covering language arts, STEM, writing, test prep, and FBLA competition coaching. AI-adaptive lessons adjust to each child in real-time, MAP-calibrated assessments track true mastery, and a Portfolio builder turns months of learning into polished application-ready records. Three free-LLM exploits closed, refund-on-failure across 8 routes, NWEA MAP PDF auto-import.",
+      "One platform that handles it all: AI modules across language arts, STEM, writing, test prep, and competition coaching. AI-adaptive lessons adjust to each child in real-time, MAP-calibrated assessments track true mastery, and a Portfolio builder turns months of learning into polished application-ready records. AI cost discipline at scale, refund-on-failure across paid AI routes, standardized test PDF auto-import.",
     status: "Phase 1 feature lattice complete — MAP Science + Portfolio formal issuance + billing hardened",
     stack: ["Next.js 16", "Prisma", "Supabase", "Stripe", "DeepSeek", "Multi-AI"],
     url: "https://ivybloom.app",
@@ -91,9 +91,9 @@ export const projects: Project[] = [
     problem:
       "Generating accurate maintenance and construction quotes for enterprise retail chains involves dozens of variables — materials, labor rates, regional pricing, service type. Manual quoting is slow and error-prone.",
     value:
-      "An AI-powered quoting platform for facility maintenance companies. Dual-AI pricing engine (Groq + Gemini) with NTE-aware cost breakdowns, real-time profit margin analysis, and multi-level approval workflows. Generates market-validated quotes in under 5 seconds — in production use since v10.",
+      "An AI-powered quoting platform for facility maintenance companies. Dual-AI pricing engine with NTE-aware cost breakdowns, real-time profit margin analysis, and multi-level approval workflows. Generates market-validated quotes in under 5 seconds — in production use since v10.",
     status: "Production v10.2 — enterprise client in use",
-    stack: ["Next.js 15", "FastAPI", "Supabase", "Groq + Gemini", "Stripe"],
+    stack: ["Next.js 15", "FastAPI", "Supabase", "Multi-LLM", "Stripe"],
     url: "https://smartquotepro.vercel.app",
     restricted: true,
     restrictedNote:
