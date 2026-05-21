@@ -10,9 +10,9 @@ export const siteConfig = {
 
 export const stats = [
   { value: "4", label: "Products Shipped" },
-  { value: "2050+", label: "Tests" },
-  { value: "36", label: "Case Studies" },
-  { value: "10", label: "Enforcement Hooks" },
+  { value: "2500+", label: "Tests" },
+  { value: "37", label: "Case Studies" },
+  { value: "14", label: "Enforcement Hooks" },
 ];
 
 export const valuePillars = [
@@ -63,9 +63,9 @@ export const projects: Project[] = [
     problem:
       "Skaters and parents can't see what's actually wrong with a jump — so they train blind. Coaches know, but their time is expensive and limited. Without clear diagnosis, practice hours get wasted on the wrong fixes.",
     value:
-      "Upload a video, get AI-powered biomechanical diagnosis: pre-rotation detection, severity measurements against performance targets, and personalized training plans with 54 drills across 7 categories. What takes a human 30 minutes takes JumpOnion 60 seconds.",
-    status: "Live — V1.3+, 1000+ tests passing",
-    stack: ["Next.js", "Render → Railway", "Vercel", "R2", "Modal", "Supabase", "Stripe", "LLM"],
+      "Upload a video, get AI-powered biomechanical diagnosis: pre-rotation detection, severity measurements against performance targets, and personalized training plans with 54 drills across 7 categories. What takes a human 30 minutes takes JumpOnion 60 seconds. Real paying customers, recurring revenue verified end-to-end.",
+    status: "Release 1 LIVE — Stripe paid subscriptions, first auto-renewal verified clean",
+    stack: ["Next.js", "Railway", "Vercel", "R2", "Modal", "Supabase", "Stripe", "LLM"],
     url: "https://jumponion.com",
     sampleHref: "/jumponion-sample",
     sampleLabel: "See live sample",
@@ -78,8 +78,8 @@ export const projects: Project[] = [
     problem:
       "Homeschool parents spend thousands on curriculum but still can't tell if their child truly mastered the material. When it's time to apply to schools, collecting and organizing learning records is expensive, exhausting, and the results are never good enough.",
     value:
-      "One platform that handles it all: 45+ AI modules covering language arts, STEM, writing, test prep, and FBLA competition coaching. AI-adaptive lessons adjust to each child in real-time, MAP-calibrated assessments track true mastery, and a Portfolio builder turns months of learning into polished application-ready records.",
-    status: "V2.8 Beta — live",
+      "One platform that handles it all: 45+ AI modules covering language arts, STEM, writing, test prep, and FBLA competition coaching. AI-adaptive lessons adjust to each child in real-time, MAP-calibrated assessments track true mastery, and a Portfolio builder turns months of learning into polished application-ready records. Three free-LLM exploits closed, refund-on-failure across 8 routes, NWEA MAP PDF auto-import.",
+    status: "Phase 1 feature lattice complete — MAP Science + Portfolio formal issuance + billing hardened",
     stack: ["Next.js 16", "Prisma", "Supabase", "Stripe", "DeepSeek", "Multi-AI"],
     url: "https://ivybloom.app",
     accent: "#F7F1FF",
@@ -139,7 +139,7 @@ export const methodSections = [
     title: "Self-Evolving Enforcement Layer",
     subtitle: "Rules that live in code, not documents",
     content:
-      "10 production hooks run on every operation — from session start to code commit. Every L2+ rule must include a retire-if condition. Rules that don't evolve become shackles. The system watches, learns, and proposes its own upgrades.",
+      "14 production hooks run on every operation — from session start to code commit, plus security-layer scanners that catch credential leaks before they reach the cloud. Every L2+ rule must include a retire-if condition. Rules that don't evolve become shackles. The system watches, learns, and proposes its own upgrades.",
     highlight:
       "New rules take effect within minutes of being written. This isn't documentation — it's a living operating system.",
   },
@@ -837,5 +837,21 @@ export const caseStudies: CaseStudy[] = [
       "The session honestly self-flagged the violation in its own outcome notes — making the case study possible at all. New rule added: when output path and working directory diverge, ownership follows output path. Both projects' dashboards updated (the working-directory project records 'no changes,' the output-path project records the actual work). A hook upgrade was queued: detect output/cwd mismatch automatically and tag the session as cross-territory.",
     punchline:
       "Honesty beats correctness. Sessions that admit they drifted off-course are repairable. Sessions that hide it become tomorrow's mystery commits.",
+  },
+  {
+    id: "session-archive-attack-surface",
+    date: "2026-05-20",
+    project: "CikiBrain × IvyBloom",
+    title: "An .env Dump in an AI Chat — Spread by 3 Layers, Discovered 3 Months Late",
+    scenario:
+      "During a cognee security spike, a grep over the Obsidian vault hit a 3-month-old IvyBloom session archive. Inside was a full .env dump — pasted by a collaborator during a debug session. The keys were not just sitting in the file. The vault syncs to Google Drive (with version history). The Google Drive feeds NotebookLM (cloud-indexed). The 'private debug log' had silently become a three-layer public attack surface, and redaction was already 3 months late.",
+    rule:
+      "Session Archive Is Attack Surface — anything pasted into an AI conversation should be treated as if published. The cure is not 'remember to redact' (graduated memory ≠ enforced rule). The cure is hooks that scan every PostToolUse, a monthly SessionStart sweep across the entire vault, and a pre-upload gate that blocks any bundle from reaching NotebookLM until it's clean.",
+    withoutSOP:
+      "Default reaction: rotate the API key, redact the file, move on. But credentials are independent planes — rotating the OpenAI key doesn't rotate the Supabase service role key or the Postgres password. The next day's cleanup caught a Postgres URL the first pass had missed. Without a pattern-source-of-truth and explicit credential-plane coverage, 'cleanup' becomes a moving target.",
+    result:
+      "Four enforcement layers shipped within 24 hours: (1) PostToolUse hook scanning every session archive write; (2) SessionStart hook running monthly vault-wide scans; (3) pre-upload gate blocking dirty bundles from NotebookLM; (4) Security Boundary sections added to all four project AGENTS.md. The hook caught a real leak on first run — a Postgres URL that the human-driven cleanup had missed. The case study upgraded from 'candidate rule' to 'PROVEN ACTIVE' the same day.",
+    punchline:
+      "Your AI debug log isn't private. It syncs to your drive, indexes into your AI search, and lives there forever. The cure isn't memory. It's hooks.",
   },
 ];
