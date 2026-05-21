@@ -317,9 +317,10 @@ CRITICAL fixes (immediate revenue/cost impact):
           </p>
 
           <p className="mt-4 text-muted-foreground">
-            Next: Day 4 — the schema migration that broke every paying
-            user&apos;s drill access for two weeks. Tests passed. Mocks
-            agreed. Production lied.
+            Next: Day 4 — the anti-pattern was already graduated to memory.
+            The AI loaded it at session start. It walked right into the same
+            bug anyway. That&apos;s the day I learned the difference between
+            memory and enforcement.
           </p>
         </article>
       </AnimateIn>

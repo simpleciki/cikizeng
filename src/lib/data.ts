@@ -221,6 +221,60 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "day-9-ai-debug-log-isnt-private",
+    title: "Day 9: Your AI Debug Log Isn't Private",
+    date: "2026-05-21",
+    excerpt:
+      "A grep over the knowledge vault hit a three-month-old AI session archive containing a full .env dump. The vault syncs to the cloud. The cloud indexes into AI search. A private debug log had become a three-layer attack surface.",
+    readTime: "9 min",
+    tags: ["IvyBloom", "Security", "AI Governance"],
+  },
+  {
+    slug: "day-8-platform-killed-the-connection",
+    title: "Day 8: The LLM Succeeded. The Platform Killed the Connection.",
+    date: "2026-04-30",
+    excerpt:
+      "First production smoke of a new training-plan endpoint. The browser hung for a minute, returned 504, and a manual refresh showed the plan was already there. The LLM finished in 59.3 seconds. The platform's 60-second gateway killed the client first.",
+    readTime: "8 min",
+    tags: ["JumpOnion", "Infrastructure", "AI Engineering"],
+  },
+  {
+    slug: "day-7-ai-deleted-20-customers-data",
+    title: "Day 7: When AI Deleted 20 Customers' Data (in One SQL Statement)",
+    date: "2026-04-25",
+    excerpt:
+      "After hunting down a real production blocker, the AI moved to clean up a stale cache. The SQL nullified three independent caches in one go. 20 rows updated. 7 paying customers' personalized diagnoses and training plans — gone.",
+    readTime: "9 min",
+    tags: ["JumpOnion", "Production Incident", "Data Safety"],
+  },
+  {
+    slug: "day-6-button-killed-the-algorithm",
+    title: "Day 6: A Button Name Killed My Algorithm",
+    date: "2026-04-22",
+    excerpt:
+      "A month of algorithm tuning hit clean calibration on 11 real videos. Then a parent uploaded one, and the system reported a 1.2-second air time on a jump that physically maxes out at 0.85 seconds. The algorithm was right. The button label was the bug.",
+    readTime: "7 min",
+    tags: ["JumpOnion", "UX Design", "AI Engineering"],
+  },
+  {
+    slug: "day-5-89k-stars-three-yes-three-no",
+    title: "Day 5: 89K Stars. I Adopted 3 Ideas. Rejected 3.",
+    date: "2026-04-18",
+    excerpt:
+      "An open-source AI agent framework went viral promising self-evolution through genetic mutation. The temptation was full adoption. The structured 5-dimension comparison was cheaper — and gave me 3 patterns to steal and 3 to reject on sight.",
+    readTime: "9 min",
+    tags: ["SOP Framework", "AI Tooling", "Competitive Analysis"],
+  },
+  {
+    slug: "day-4-memory-is-a-wish",
+    title: "Day 4: Memory Is a Wish. Hooks Are the Law.",
+    date: "2026-04-15",
+    excerpt:
+      "The anti-pattern was already in memory. The AI loaded it at session start. It walked right into the same bug anyway. Forty minutes from paying-customer report to root cause to deploy — and a deeper finding that rewired how I store rules.",
+    readTime: "8 min",
+    tags: ["JumpOnion", "AI Governance", "Memory Architecture"],
+  },
+  {
     slug: "day-3-when-ai-lied-about-dead-code",
     title: "Day 3: When AI Lied About Dead Code (30 Hours of Silent Failures)",
     date: "2026-04-14",
