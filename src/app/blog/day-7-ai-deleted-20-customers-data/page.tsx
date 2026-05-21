@@ -72,29 +72,29 @@ export default function Day7Page() {
             The AI proposed:
           </p>
           <pre className="bg-[#F8F4EE] border-2 border-[#383838] rounded-md p-4 text-xs overflow-x-auto">
-{`UPDATE diagnosis_results
-SET analytics_cache = NULL,
-    diagnosis_cache = NULL,
-    training_plan_cache = NULL
-WHERE created_at BETWEEN '2026-03-15' AND '2026-04-10';`}
+{`UPDATE <results_table>
+SET <cache_column_a> = NULL,
+    <cache_column_b> = NULL,
+    <cache_column_c> = NULL
+WHERE created_at BETWEEN '<date>' AND '<date>';`}
           </pre>
           <p>
             The intent in the AI&apos;s head: &quot;reset the affected
             uploads so they recompute.&quot; The mental model: a single
-            cache wiped clean on next read. The actual table schema: three
-            independent caches in three independent columns, each
+            cache wiped clean on next read. The actual table schema:
+            multiple independent caches in separate columns, each
             populated by a different upstream pipeline.
           </p>
           <p>
             One pipeline (the analytics one) was correctly broken — that
-            was the bug we just fixed. The other two pipelines (diagnosis
-            text and training plan) were independent. They&apos;d been
-            running fine the whole time. Their cached output was current,
-            personalized, and the result of expensive LLM calls.
+            was the bug we just fixed. The other pipelines were
+            independent. They&apos;d been running fine the whole time.
+            Their cached output was current, personalized, and the result
+            of expensive LLM calls.
           </p>
           <p>
-            <code>SET ... = NULL</code> on all three columns wiped all
-            three.
+            <code>SET ... = NULL</code> on all the cache columns wiped
+            them all.
           </p>
 
           <h2 className="text-xl font-bold tracking-tight mt-10 mb-4">
@@ -157,11 +157,9 @@ WHERE created_at BETWEEN '2026-03-15' AND '2026-04-10';`}
               <strong>Cache invalidation follows upstream-dependency rules.</strong>{" "}
               Every cache column has a known upstream input. When you fix
               an upstream bug, you invalidate only the cache columns that
-              depend on that input. Pose-estimation bug → invalidate
-              analytics cache. Prompt change → invalidate diagnosis cache.
-              Drill catalog change → invalidate training plan cache. Never
-              invalidate &quot;all caches&quot; as a habit. Caches are
-              independent for a reason.
+              depend on that input — never &quot;all caches&quot; as a
+              reflex. Each cache is a separate column because each has a
+              separate upstream. Treat them that way.
             </li>
             <li>
               <strong>Destructive SQL on multi-row production data
@@ -182,16 +180,16 @@ WHERE created_at BETWEEN '2026-03-15' AND '2026-04-10';`}
           <p>
             What I keep coming back to is the AI&apos;s mental model at
             the moment it wrote that SQL. The model was: &quot;cache =
-            single thing that gets reset.&quot; Not: &quot;cache = three
-            independent columns, each with its own provenance, only one
-            of which is actually stale.&quot;
+            single thing that gets reset.&quot; Not: &quot;cache =
+            multiple independent columns, each with its own provenance,
+            only one of which is actually stale.&quot;
           </p>
           <p>
             The AI didn&apos;t lack data. The schema was loaded in the
-            session context. The three column names were even in its
+            session context. The cache column names were even in its
             tab-completion. What it lacked was the <em>discipline</em> of
-            asking &quot;which of these three actually needs invalidation,
-            and why?&quot; before writing the SQL.
+            asking &quot;which of these actually needs invalidation, and
+            why?&quot; before writing the SQL.
           </p>
           <p>
             That discipline, written down, is a SOP rule. Without the rule,

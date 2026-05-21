@@ -96,8 +96,8 @@ export default function Day8Page() {
           </p>
           <pre className="bg-[#F8F4EE] border-2 border-[#383838] rounded-md p-4 text-xs overflow-x-auto">
 {`call_id: 1f3...
-model: gpt-4o-mini
-prompt_rev: training_plan/v3
+model: <llm-model>
+prompt_rev: <prompt-version>
 duration_ms: 59287       <-- 59.287 seconds
 status: success
 output_chars: 4831`}

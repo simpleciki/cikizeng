@@ -6,7 +6,7 @@ import { AnimateIn } from "@/components/ui/animate-in";
 export const metadata: Metadata = {
   title: "Day 6: A Button Name Killed My Algorithm",
   description:
-    "A month of algorithm tuning hit clean calibration on 11 real videos. Then a parent uploaded one, and the system reported a 1.2-second air time on a jump that physically maxes out at 0.85 seconds. The algorithm was right. The button label was the bug.",
+    "A month of algorithm tuning hit clean calibration on a real-jump set. Then a parent uploaded a new video, and the system reported a 1.2-second air time on a jump that physically maxes out at 0.85 seconds. The algorithm was right. The button label was the bug.",
   openGraph: {
     title: "Day 6: A Button Name Killed My Algorithm",
     description:
@@ -52,12 +52,12 @@ export default function Day6Page() {
       <AnimateIn delay={100}>
         <article className="prose-custom space-y-6 text-sm leading-relaxed sm:text-base sm:leading-relaxed">
           <p>
-            By this point JumpOnion had been calibrated against 11 real
-            figure skating videos. The algorithm went through three versions
-            in a month — tightening thresholds, adding physics constraints,
-            squeezing out false positives. By the end of v3, every video in
-            the calibration set produced a diagnosis that matched the
-            coach&apos;s ground truth.
+            By this point JumpOnion had been calibrated against a real-jump
+            set sourced from coaches and senior skaters. The algorithm went
+            through several iterations in a month — tightening thresholds,
+            adding physics constraints, squeezing out false positives. By
+            the end of that pass, every video in the calibration set
+            produced a diagnosis that matched the coach&apos;s ground truth.
           </p>
           <p>
             Then a real parent uploaded a video. Air time: 1.2 seconds.
@@ -107,24 +107,21 @@ export default function Day6Page() {
           </h2>
           <p>
             The algorithm&apos;s internal contract was different. Its
-            takeoff detector worked by analyzing the blade&apos;s vertical
-            velocity profile <em>before</em> the actual takeoff — looking
-            for the moment of explosive upward acceleration. That moment is
-            real, but it requires <em>frames before the takeoff to
-            exist</em>. The same was true on the other end: the landing
-            detector needed frames after the landing to confirm stabilization.
+            takeoff and landing detectors looked at signal patterns
+            <em> around</em> the events, not at the events themselves —
+            patterns that require <em>context frames on either side of the
+            event to exist</em>. If you trim the clip flush against the
+            takeoff and landing, the detectors lose their anchor.
           </p>
           <p>
             When the user set the buttons to the literal takeoff and
             landing frames, they trimmed the clip flush against those
-            events. No pre-takeoff frames. No post-landing frames. The
-            detectors had nothing to anchor against — they fell back to the
-            first and last frames of the clip, which were the user&apos;s
-            chosen takeoff and landing, which were now treated as
-            &quot;clip starts&quot; and &quot;clip ends&quot;. The
-            algorithm calculated the duration from the clip&apos;s first
-            frame to its last frame: 1.2 seconds. Mathematically perfect.
-            Physically nonsense.
+            events. The detectors had no context frames to anchor against,
+            so they fell back to the first and last frames of the clip —
+            which the user had chosen to be the takeoff and landing.
+            Those got treated as clip boundaries. The algorithm calculated
+            the duration from clip start to clip end: 1.2 seconds.
+            Mathematically perfect. Physically nonsense.
           </p>
           <div className="callout-highlight text-sm my-6">
             The buttons were a promise: &quot;tell us takeoff and landing.&quot;
@@ -167,11 +164,10 @@ export default function Day6Page() {
             What The Calibration Set Couldn&apos;t Catch
           </h2>
           <p>
-            The 11 calibration videos came from skating coaches and senior
-            skaters. They had been trimmed by someone who already understood
-            the algorithm&apos;s needs — clips with enough padding on each
-            end. The calibration set was perfectly clean. It was a
-            laboratory dataset.
+            The calibration set came from skating coaches and senior
+            skaters. Those clips had been trimmed by people who already
+            understood what the algorithm needed — padding on each end. The
+            calibration set was perfectly clean. It was a laboratory dataset.
           </p>
           <p>
             What it never contained: a clip trimmed by someone who took the
