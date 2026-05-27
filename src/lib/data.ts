@@ -63,7 +63,7 @@ export const projects: Project[] = [
     problem:
       "Skaters and parents can't see what's actually wrong with a jump — so they train blind. Coaches know, but their time is expensive and limited. Without clear diagnosis, practice hours get wasted on the wrong fixes.",
     value:
-      "Upload a video, get AI-powered biomechanical diagnosis: pre-rotation detection, severity measurements against performance targets, and a personalized off-ice drill library matched to the diagnosis. What takes a human 30 minutes takes JumpOnion 60 seconds. Real paying customers, recurring revenue verified end-to-end.",
+      "Upload a video, get AI-powered biomechanical measurements: takeoff height, air time, axis stability, and landing balance — each scored against jump-type performance targets, with a personalized off-ice drill library matched to the diagnosis. Rotation defect calls (under-rotation, cheated takeoff) require a human expert and are routed to coach review, not auto-displayed. What takes a human 30 minutes takes JumpOnion 60 seconds. Real paying customers, recurring revenue verified end-to-end.",
     status: "Release 1 LIVE — Stripe paid subscriptions, first auto-renewal verified clean",
     stack: ["Next.js", "Railway", "Vercel", "R2", "Modal", "Supabase", "Stripe", "LLM"],
     url: "https://jumponion.com",

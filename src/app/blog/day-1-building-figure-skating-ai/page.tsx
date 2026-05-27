@@ -70,9 +70,9 @@ export default function Day1Page() {
           <p>
             Parents sitting rinkside can see that a jump went wrong. What they
             can&apos;t see is <em>why</em>. Was the takeoff angle too steep?
-            Was there pre-rotation on the ice? Did the skater open up too
-            early in the air? These are biomechanical questions that require
-            trained eyes and professional knowledge.
+            Was the takeoff height low for the jump type? Did the skater open
+            up too early in the air? These are biomechanical questions that
+            require trained eyes and professional knowledge.
           </p>
           <p>
             I started keeping notes. After years of rinkside
@@ -93,8 +93,8 @@ export default function Day1Page() {
           <p>
             The idea was simple: upload a video of a jump, get back a
             biomechanical diagnosis. Not vague encouragement — specific,
-            measurable analysis. Pre-rotation angle. Air time. Blade angle at
-            landing. Rotation completion percentage.
+            measurable analysis. Takeoff height. Air time. Axis stability in
+            the air. Landing balance.
           </p>
           <p>
             I spent Day 1 doing what most developers skip: researching whether
