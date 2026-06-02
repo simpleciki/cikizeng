@@ -106,6 +106,75 @@ export const sunnyInvoicesNote = {
   text: "Plus SunnyInvoices — a three-layer automation script (Tampermonkey + Node.js + Playwright) that turns a 5x manual process into one click. Not a product, just a testament to solving real problems with code.",
 };
 
+// ── Work / case-study collection ──────────────────────────────────────────────
+// Recruiter-facing deep-dives. Honesty framing: designed / directed AI build /
+// verified end-to-end — NOT "coded from scratch", NOT "a SaaS I sell".
+export type WorkCaseStudy = {
+  slug: string;
+  name: string;
+  tagline: string;
+  role: string; // role chip — what Ciki owned
+  summary: string; // index-card blurb
+  cover?: string; // cover image path (published only)
+  accent: string; // pastel card bg
+  borderColor: string;
+  status: "published" | "in-progress";
+  href?: string; // internal detail link (published only)
+};
+
+export const workCaseStudies: WorkCaseStudy[] = [
+  {
+    slug: "smartquotepro",
+    name: "SmartQuote Pro",
+    tagline:
+      "An AI-augmented quoting & margin-review system I designed and operate for a facilities-maintenance business.",
+    role: "Designed · Directed AI build · Verified end-to-end",
+    summary:
+      "Intake → priced quote → risk-gated human review → audit trail. The margin control is built into the pricing logic, role-scoped access is enforced server-side, and an LLM drafts the strategy memo but never makes the decision.",
+    cover: "/work/smartquotepro/01-landing.png",
+    accent: "#FFF9DB",
+    borderColor: "#D4A800",
+    status: "published",
+    href: "/work/smartquotepro",
+  },
+  {
+    slug: "jumponion",
+    name: "JumpOnion",
+    tagline:
+      "A computer-vision + rule-engine system that diagnoses figure-skating jumps — measurement first, LLM as translator.",
+    role: "Designed · Directed AI build · Verified end-to-end",
+    summary:
+      "Deterministic biomechanics measure the jump; an LLM only translates the verdict into language. Rotation-defect calls that need a human are routed to expert review, never auto-displayed.",
+    accent: "#EBF9FF",
+    borderColor: "#54B4DE",
+    status: "in-progress",
+  },
+  {
+    slug: "ivybloom",
+    name: "IvyBloom",
+    tagline:
+      "An adaptive-learning platform with AI cost discipline and mastery tracking I designed end-to-end.",
+    role: "Designed · Directed AI build · Verified end-to-end",
+    summary:
+      "Multi-AI lesson generation with refund-on-failure on paid routes, assessment-calibrated mastery tracking, and a portfolio builder that turns months of learning into application-ready records.",
+    accent: "#F7F1FF",
+    borderColor: "#A78BFA",
+    status: "in-progress",
+  },
+  {
+    slug: "sunnyinvoices",
+    name: "SunnyInvoices",
+    tagline:
+      "A three-layer automation that collapses a repetitive manual billing process into one click.",
+    role: "Designed · Built · Verified",
+    summary:
+      "A browser-script + Node + Playwright pipeline that turns a 5x manual workflow into a single action — built to solve a real operational pain, not as a product.",
+    accent: "#EDE8E3",
+    borderColor: "#9A8C7E",
+    status: "in-progress",
+  },
+];
+
 export const methodSections = [
   {
     id: "amdahl",
@@ -204,6 +273,7 @@ export const pricingTiers = [
 export const navLinks = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
+  { href: "/work", label: "Work" },
   { href: "/method", label: "Method" },
   { href: "/case-studies", label: "Case Studies" },
   { href: "/blog", label: "Blog" },

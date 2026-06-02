@@ -14,6 +14,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: baseUrl, lastModified, priority: 1.0 },
     { url: `${baseUrl}/projects`, lastModified, priority: 0.9 },
+    { url: `${baseUrl}/work`, lastModified: new Date("2026-06-02"), priority: 0.9 },
+    { url: `${baseUrl}/work/smartquotepro`, lastModified: new Date("2026-06-02"), priority: 0.9 },
     { url: `${baseUrl}/jumponion-sample`, lastModified: new Date("2026-04-10"), priority: 0.9 },
     { url: `${baseUrl}/method`, lastModified, priority: 0.8 },
     { url: `${baseUrl}/case-studies`, lastModified, priority: 0.8 },
