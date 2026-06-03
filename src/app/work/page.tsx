@@ -53,14 +53,16 @@ export default function WorkPage() {
             }}
           >
             {w.cover && (
-              <div className="relative border-b-2" style={{ borderColor: w.borderColor }}>
+              <div
+                className="relative border-b-2 aspect-[16/10] overflow-hidden"
+                style={{ borderColor: w.borderColor }}
+              >
                 <Image
                   src={w.cover}
                   alt={`${w.name} — system landing`}
-                  width={2880}
-                  height={1800}
+                  fill
                   sizes="(max-width: 1024px) 100vw, 1024px"
-                  className="w-full h-auto block"
+                  className="object-cover"
                   priority
                 />
               </div>

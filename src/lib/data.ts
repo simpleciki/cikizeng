@@ -145,6 +145,7 @@ export const workCaseStudies: WorkCaseStudy[] = [
     role: "Designed · Directed AI build · Verified end-to-end",
     summary:
       "Deterministic biomechanics measure the jump; an LLM only translates the verdict into language. Rotation-defect calls that need a human are routed to expert review, never auto-displayed.",
+    cover: "/work/jumponion/cover.png",
     accent: "#EBF9FF",
     borderColor: "#54B4DE",
     status: "published",
