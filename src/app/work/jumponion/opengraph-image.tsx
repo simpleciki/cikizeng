@@ -1,14 +1,22 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 
-// Statically optimized at build time (no request-time APIs / no uncached data).
+// Statically optimized at build time (readFile of a local asset is not a request-time API).
 export const alt =
   "JumpOnion — a computer-vision + rule-engine figure-skating jump-diagnosis system I designed, directed, and verified end-to-end.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
+const FONT_DIR = "src/app/work/jumponion/_fonts";
 const chips = ["Designed", "Directed AI build", "Verified end-to-end"];
 
-export default function Image() {
+export default async function Image() {
+  const [geistRegular, geistBold] = await Promise.all([
+    readFile(join(process.cwd(), FONT_DIR, "Geist-Regular.woff")),
+    readFile(join(process.cwd(), FONT_DIR, "Geist-Bold.woff")),
+  ]);
+
   return new ImageResponse(
     (
       <div
@@ -18,6 +26,7 @@ export default function Image() {
           display: "flex",
           padding: 56,
           backgroundColor: "#EBF9FF",
+          fontFamily: "Geist",
         }}
       >
         <div
@@ -43,6 +52,7 @@ export default function Image() {
             <div
               style={{
                 fontSize: 22,
+                fontWeight: 700,
                 letterSpacing: 3,
                 color: "#1E5C7A",
                 textTransform: "uppercase",
@@ -50,23 +60,34 @@ export default function Image() {
             >
               Case Study · JumpOnion
             </div>
-            <div style={{ fontSize: 22, color: "#8A8F94" }}>cikizeng.com/work</div>
+            <div style={{ fontSize: 22, fontWeight: 400, color: "#8A8F94" }}>
+              cikizeng.com/work
+            </div>
           </div>
 
           {/* main block */}
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ fontSize: 104, fontWeight: 700, color: "#1A1A1A", lineHeight: 1 }}>
+            <div style={{ fontSize: 108, fontWeight: 700, color: "#1A1A1A", lineHeight: 1 }}>
               JumpOnion
             </div>
-            <div style={{ display: "flex", fontSize: 34, color: "#44474A", marginTop: 22, lineHeight: 1.3 }}>
+            <div
+              style={{
+                display: "flex",
+                fontSize: 34,
+                fontWeight: 400,
+                color: "#44474A",
+                marginTop: 24,
+                lineHeight: 1.3,
+              }}
+            >
               A computer-vision + rule-engine system that diagnoses figure-skating jumps.
             </div>
             <div
               style={{
                 display: "flex",
-                fontSize: 30,
+                fontSize: 31,
+                fontWeight: 700,
                 color: "#1E5C7A",
-                fontWeight: 600,
                 marginTop: 22,
               }}
             >
@@ -82,6 +103,7 @@ export default function Image() {
                 style={{
                   display: "flex",
                   fontSize: 23,
+                  fontWeight: 400,
                   color: "#1E5C7A",
                   backgroundColor: "#F2FAFE",
                   border: "2px solid #BBE3F2",
@@ -97,6 +119,12 @@ export default function Image() {
         </div>
       </div>
     ),
-    { ...size }
+    {
+      ...size,
+      fonts: [
+        { name: "Geist", data: geistRegular, weight: 400, style: "normal" },
+        { name: "Geist", data: geistBold, weight: 700, style: "normal" },
+      ],
+    }
   );
 }
