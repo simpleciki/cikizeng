@@ -147,7 +147,8 @@ export const workCaseStudies: WorkCaseStudy[] = [
       "Deterministic biomechanics measure the jump; an LLM only translates the verdict into language. Rotation-defect calls that need a human are routed to expert review, never auto-displayed.",
     accent: "#EBF9FF",
     borderColor: "#54B4DE",
-    status: "in-progress",
+    status: "published",
+    href: "/work/jumponion",
   },
   {
     slug: "ivybloom",

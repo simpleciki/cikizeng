@@ -41,3 +41,7 @@ yarn-error.log*
 next-env.d.ts
 
 .vercel
+
+# local-only, untracked (also keeps Tailwind v4's source auto-scan off the CJK session archives)
+/docs/
+.claude/settings.local.json

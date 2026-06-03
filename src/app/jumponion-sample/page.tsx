@@ -284,7 +284,14 @@ export default function JumpOnionSamplePage() {
             </div>
           </div>
 
-          <p className="mt-4 text-xs text-muted-foreground italic">
+          <p className="mt-4 text-xs text-muted-foreground italic leading-relaxed">
+            Note: this is an earlier sample analysis (March 2026), kept for illustration. JumpOnion
+            has since changed how it surfaces high-sensitivity rotation calls &mdash; labels like
+            under-rotation are now routed to a human coach for review rather than shown automatically.
+            The underlying measurements are unchanged.
+          </p>
+
+          <p className="mt-3 text-xs text-muted-foreground italic">
             The green &quot;excellent&quot; is the main verdict.
             The red &quot;also noted&quot; is where most tools stop.
             That&apos;s where JumpOnion starts.
