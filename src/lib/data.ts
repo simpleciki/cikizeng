@@ -8,12 +8,8 @@ export const siteConfig = {
   gumroadUrl: "https://cikizeng.gumroad.com", // update with actual product URLs after Gumroad listing
 };
 
-export const stats = [
-  { value: "4", label: "Products Shipped" },
-  { value: "2500+", label: "Tests" },
-  { value: "37", label: "Case Studies" },
-  { value: "14", label: "Enforcement Hooks" },
-];
+// `stats` is defined at the BOTTOM of this file so its Case Studies tile can
+// derive its count from the published `caseStudies` array (single source of truth).
 
 export const valuePillars = [
   {
@@ -34,7 +30,7 @@ export const valuePillars = [
     id: "evolution",
     title: "Self-Evolving Enforcement",
     description:
-      "Rules written in code, not docs. 10 hooks that enforce discipline — and every rule has an expiration date, because rules that don't evolve become shackles.",
+      "Rules written in code, not docs. ~19–20 hooks that enforce discipline — and every rule has an expiration date, because rules that don't evolve become shackles.",
     icon: "zap",
   },
 ];
@@ -166,6 +162,20 @@ export const workCaseStudies: WorkCaseStudy[] = [
     href: "/work/ivybloom",
   },
   {
+    slug: "cikibrain",
+    name: "CikiBrain",
+    tagline:
+      "A self-governing AI-agent operating system I architected to run a one-person, four-product software company — verification enforced in code, not prompts.",
+    role: "Designed · Architected · Operated",
+    summary:
+      "A four-layer memory architecture, ~19–20 enforcement hooks across five lifecycle events, and a self-evolving ledger that tracks its operator's demonstrated capability from live signals — PII-safe by design. One system governs four shipped products and catches its own operator's false-completion and drift.",
+    cover: "/work/cikibrain/cover.png",
+    accent: "#EEF5F0",
+    borderColor: "#5B9A7A",
+    status: "published",
+    href: "/work/cikibrain",
+  },
+  {
     slug: "sunnyinvoices",
     name: "SunnyInvoices",
     tagline:
@@ -212,7 +222,7 @@ export const methodSections = [
     title: "Self-Evolving Enforcement Layer",
     subtitle: "Rules that live in code, not documents",
     content:
-      "14 production hooks run on every operation — from session start to code commit, plus security-layer scanners that catch credential leaks before they reach the cloud. Every L2+ rule must include a retire-if condition. Rules that don't evolve become shackles. The system watches, learns, and proposes its own upgrades.",
+      "~19–20 production hooks run across five lifecycle events — from session start to code commit, plus security-layer scanners that catch credential leaks before they reach the cloud. Every L2+ rule must include a retire-if condition. Rules that don't evolve become shackles. The system watches, learns, and proposes its own upgrades.",
     highlight:
       "New rules take effect within minutes of being written. This isn't documentation — it's a living operating system.",
   },
@@ -982,4 +992,14 @@ export const caseStudies: CaseStudy[] = [
     punchline:
       "Your AI debug log isn't private. It syncs to your drive, indexes into your AI search, and lives there forever. The cure isn't memory. It's hooks.",
   },
+];
+
+// ── Homepage stat tiles ───────────────────────────────────────────────────────
+// Defined here (after `caseStudies`) so the Case Studies count derives from the
+// published array — single source of truth, never hand-edited when a case is added.
+export const stats = [
+  { value: "4", label: "Products Shipped" },
+  { value: "2500+", label: "Tests" },
+  { value: String(caseStudies.length), label: "Case Studies" },
+  { value: "19", label: "Enforcement Hooks" },
 ];

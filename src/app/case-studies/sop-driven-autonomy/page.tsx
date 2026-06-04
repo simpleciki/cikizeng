@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LinkButton } from "@/components/ui/link-button";
 import { AnimateIn } from "@/components/ui/animate-in";
+import { caseStudies } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "SOP-Driven Agent Autonomy — Ciki Zeng",
@@ -402,7 +403,7 @@ export default function SOPDrivenAutonomyPage() {
               href="/case-studies"
               className="inline-flex items-center justify-center rounded-full border-2 border-[#383838] bg-white px-6 py-2.5 text-sm font-semibold transition-colors hover:bg-[#F4EFEA]"
             >
-              All 14 Case Studies
+              All {caseStudies.length} Case Studies
             </Link>
           </div>
         </div>
