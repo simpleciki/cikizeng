@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AnimateIn } from "@/components/ui/animate-in";
+import {
+  JudgmentDecisionGrid,
+  OutcomeReceipt,
+  OwnershipCards,
+} from "./_components/evidence-sections";
+import { SketchVisual } from "./_components/sketch-visuals";
+import { StoryPanelCard } from "./_components/storyboard";
+import { storyPanels } from "./_components/storyboard-data";
 
 export const metadata: Metadata = {
   title: "CikiBrain — an AI-agent operating system I architected & operate",
@@ -24,14 +32,6 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
     <div className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground mb-3">
       {children}
     </div>
-  );
-}
-
-function StepNumber({ n }: { n: number }) {
-  return (
-    <span className="inline-flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-foreground text-background font-mono text-xs font-bold">
-      {n}
-    </span>
   );
 }
 
@@ -209,108 +209,6 @@ function LayerStack() {
   );
 }
 
-// ── Walkthrough (architect captions — text only, honesty-framed) ──────────────
-type Step = { n: number; label: string; caption: React.ReactNode };
-
-const steps: Step[] = [
-  {
-    n: 1,
-    label: "The system",
-    caption: (
-      <>
-        A personal AI-agent operating system that runs a one-person, four-product software company. I{" "}
-        <strong>
-          designed the governance, directed AI to implement it, and I&apos;m the verification gate.
-        </strong>{" "}
-        It&apos;s a system of files and config &mdash; deliberately legible, not a black box &mdash; so
-        the judgment lives somewhere I can audit and the AI has to obey.
-      </>
-    ),
-  },
-  {
-    n: 2,
-    label: "Prompts are suggestions. Hooks are law.",
-    caption: (
-      <>
-        A rule written into a prompt is best-effort &mdash; and the insight that forced the next layer
-        was watching <strong>a rule that existed and the AI still not follow it.</strong> So judgment
-        that actually matters descends into hooks: mandatory checks that run in code on every session,
-        not reminders the model is free to skip. The enforcement layer is the difference between a
-        document and an operating system.
-      </>
-    ),
-  },
-  {
-    n: 3,
-    label: "Capture low, promote on recurrence, then retire",
-    caption: (
-      <>
-        Observations start cheap. When one recurs &mdash; twice, or across projects, or it hardens into
-        a rule &mdash; it&apos;s <strong>promoted into an enforced hook.</strong> And every enforced
-        rule carries a <strong>retire-if</strong> condition, so it can die when it&apos;s obsolete. A
-        rule that can&apos;t expire becomes a shackle; the lifecycle is part of the design, not an
-        afterthought.
-      </>
-    ),
-  },
-  {
-    n: 4,
-    label: "It catches its own operator",
-    caption: (
-      <>
-        732 passing tests are not production-verified. A &ldquo;done&rdquo; can be false. Context drifts
-        over a long session. The system encodes those failure modes as gates &mdash; verification,
-        grounding, completeness &mdash; so it catches{" "}
-        <strong>my own false-completions and drift, not just the AI&apos;s.</strong> Designing against
-        your own blind spots is the part most workflows skip.
-      </>
-    ),
-  },
-  {
-    n: 5,
-    label: "Threat-modeling the AI pipeline",
-    caption: (
-      <>
-        A non-obvious leak chain &mdash; an AI debug transcript that syncs to cloud storage and then
-        gets indexed by AI search &mdash; isn&apos;t something a secret-scanner alone can catch. So the
-        enforcement layer includes <strong>security hooks and a source-write quarantine</strong>{" "}
-        designed around that specific chain. Correctness here is a safety property, not a nicety.
-      </>
-    ),
-  },
-  {
-    n: 6,
-    label: "Self-evolution, then productized",
-    caption: (
-      <>
-        The capability-ledger closes the loop &mdash; the system now updates its operator&apos;s own
-        capability record from live evidence, PII-safe by design. And the whole methodology was{" "}
-        <strong>sanitized into a portable framework</strong> &mdash; the internal system built first,
-        then packaged so it&apos;s installable by someone else.
-      </>
-    ),
-  },
-];
-
-const highlights = [
-  {
-    title: "Judgment encoded as executable rules",
-    body: "Verification, scope, and grounding guards turn a recurring human-or-AI failure into a permanent, mechanical guarantee. The thesis a public case study proved 16 times: AI won't reliably self-enforce, so you force it in code — and verify it with real incidents, not theory.",
-  },
-  {
-    title: "Self-evolving capability tracking",
-    body: "A hook plus a skill plus a PII-safe ledger that learns its operator's demonstrated capability from live signals. Novel and meta — the system observes the person operating it, by consent, storing allow-listed keys and a hash, never a word of prompt text.",
-  },
-  {
-    title: "Anti-self-deception, by design",
-    body: "Grounding, completeness, and compliance gates catch the system's own false-completion, stale context, and drift. The point isn't catching the AI — it's designing against my failure modes as deliberately as the model's.",
-  },
-  {
-    title: "Lifecycle governance, not rule-piling",
-    body: "An auto-derived registry surfaces every mechanism's liveness from its own footprint — never hand-maintained, so it never rots. When capture began to outrun drain, the fix was drain mechanisms, not more rules. Systems thinking over discipline theater.",
-  },
-];
-
 export default function CikiBrainWorkPage() {
   return (
     <div className="mx-auto max-w-4xl px-6 py-24">
@@ -335,12 +233,10 @@ export default function CikiBrainWorkPage() {
             <span className="text-muted-foreground">Verification enforced in code, not prompts.</span>
           </h1>
           <p className="mt-6 text-base leading-relaxed text-muted-foreground max-w-2xl">
-            CikiBrain is the governance layer that lets one person plus AI run four shipped products
-            without the wheels coming off. A four-layer memory architecture, ~19&ndash;20 enforcement
-            hooks across five lifecycle events, and a self-evolving ledger that tracks its own
-            operator&apos;s demonstrated capability from live signals. I designed it, directed AI to
-            build it, and I&apos;m the verification gate. Here&apos;s how it&apos;s built, and the calls
-            I made.
+            AI made one person dangerously fast. CikiBrain is the counterweight: a four-layer memory
+            architecture, ~19&ndash;20 enforcement hooks across five lifecycle events, and a
+            self-evolving ledger that turns live work into evidence. I designed it, directed AI to
+            build it, and I&apos;m the verification gate.
           </p>
           <div className="mt-5 flex flex-wrap gap-2">
             {["Designed & architected", "Directed the AI build", "Operated daily"].map((chip) => (
@@ -364,10 +260,8 @@ export default function CikiBrainWorkPage() {
             no prompt text.
           </h2>
           <p className="text-sm leading-relaxed text-muted-foreground max-w-2xl mb-6">
-            Most of this system governs <em>work</em>. This part governs <em>evidence</em>: a silent,
-            PII-safe loop that captures what the operator actually does, distills it into proof, and
-            evolves a capability baseline from real signals instead of a once-a-year rewrite. It&apos;s
-            the newest layer &mdash; and the reason this case study exists alongside the methodology.
+            Most of CikiBrain governs <em>work</em>. This loop governs <em>evidence</em>: what happened,
+            what it proves, and whether the human approves moving the baseline.
           </p>
           <LedgerLoopDiagram />
         </div>
@@ -388,15 +282,23 @@ export default function CikiBrainWorkPage() {
       <AnimateIn delay={150}>
         <section className="mb-16">
           <SectionLabel>The problem</SectionLabel>
-          <p className="text-sm leading-relaxed text-foreground/90 max-w-2xl">
-            In an AI-leveraged company the bottleneck isn&apos;t writing code &mdash; AI does that fast,
-            and platforms will only make it faster. The bottleneck is <strong>judgment</strong>: knowing
-            when output is wrong, when &ldquo;done&rdquo; isn&apos;t done, when not to trust the model.
-            That judgment doesn&apos;t scale by working harder, and it quietly drifts over a long
-            session. CikiBrain is built around one idea: systematize judgment into rules the system runs
-            on its own &mdash; so AI scales the work without scaling the recklessness, and the discipline
-            survives my own attention.
-          </p>
+          <div className="grid gap-6 sm:grid-cols-[1fr_0.9fr] sm:items-center">
+            <div>
+              <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+                The keyboard got faster. The judgment did not.
+              </h2>
+              <p className="mt-4 text-sm leading-relaxed text-foreground/90">
+                In an AI-leveraged company, output is cheap: code, plans, fixes, copy. The expensive
+                part is deciding when output is wrong, when &ldquo;done&rdquo; is not done, and when not
+                to trust the model.
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                CikiBrain is built around one idea: systematize that judgment into rules the system
+                runs on its own, so AI scales the work without scaling the recklessness.
+              </p>
+            </div>
+            <SketchVisual kind="bottleneck" />
+          </div>
         </section>
       </AnimateIn>
 
@@ -408,10 +310,8 @@ export default function CikiBrainWorkPage() {
             Four layers, one rule: the things that matter run in code.
           </h2>
           <p className="text-sm leading-relaxed text-muted-foreground max-w-2xl mb-6">
-            Every kind of information has exactly one home. Knowledge lives in the vault; active rules in
-            the runtime; mandatory checks in the enforcement layer; and graduating feedback in the
-            training buffer. The enforcement layer is what turns a set of good intentions into an
-            operating system.
+            Each layer owns one job. The important shift is layer three: when a recurring failure matters,
+            it stops being advice and starts running as code.
           </p>
           <LayerStack />
         </section>
@@ -420,29 +320,21 @@ export default function CikiBrainWorkPage() {
       {/* ── Walkthrough ───────────────────────────────────────────────── */}
       <AnimateIn delay={150}>
         <div className="mb-8">
-          <SectionLabel>Walkthrough · 6 steps</SectionLabel>
+          <SectionLabel>Storyboard &middot; 6 frames</SectionLabel>
           <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
-            How the system works &mdash; and why it&apos;s built this way.
+            The system, told as six small pictures.
           </h2>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            Each frame is one design call: what broke, what moved into the system, and what evidence
+            proves the mechanism exists.
+          </p>
         </div>
       </AnimateIn>
 
-      <div className="space-y-10">
-        {steps.map((step, i) => (
-          <AnimateIn key={step.n} delay={i < 3 ? 150 : 0}>
-            <section>
-              <div className="flex items-start gap-3">
-                <StepNumber n={step.n} />
-                <div>
-                  <div className="font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-muted-foreground mb-1">
-                    Step {step.n} · {step.label}
-                  </div>
-                  <p className="text-sm leading-relaxed text-foreground/90 max-w-2xl">
-                    {step.caption}
-                  </p>
-                </div>
-              </div>
-            </section>
+      <div className="space-y-8">
+        {storyPanels.map((panel, i) => (
+          <AnimateIn key={panel.title} delay={i < 3 ? 150 : 0}>
+            <StoryPanelCard panel={panel} />
           </AnimateIn>
         ))}
       </div>
@@ -451,83 +343,33 @@ export default function CikiBrainWorkPage() {
       <AnimateIn>
         <section className="mt-20">
           <SectionLabel>Architecture &amp; judgment</SectionLabel>
-          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl mb-6">
+          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl mb-3">
             The four calls that define the system.
           </h2>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {highlights.map((h) => (
-              <div
-                key={h.title}
-                className="p-5 rounded-2xl border-2 bg-white"
-                style={{ borderColor: "rgba(45,45,45,0.14)" }}
-              >
-                <h3 className="text-base font-bold mb-2">{h.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{h.body}</p>
-              </div>
-            ))}
-          </div>
+          <p className="mb-6 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            The design is not a pile of rules. Each call turns a recurring failure mode into a visible
+            system behavior.
+          </p>
+          <JudgmentDecisionGrid />
         </section>
       </AnimateIn>
 
       {/* ── Outcomes ──────────────────────────────────────────────────── */}
       <AnimateIn>
         <section className="mt-16">
-          <div
-            className="p-8 rounded-2xl border-2"
-            style={{ borderColor: ACCENT.border, backgroundColor: ACCENT.bg }}
-          >
-            <SectionLabel>Outcomes</SectionLabel>
-            <p className="text-lg font-bold leading-snug max-w-2xl">
-              One system governs four shipped products &mdash; and catches its own operator&apos;s
-              false-completion and context drift.
-            </p>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground max-w-2xl">
-              The verifiable surface is the system itself: a four-layer architecture, ~19&ndash;20
-              enforcement hooks across five lifecycle events, and a 45-entry methodology library
-              &mdash; each entry a real incident &rarr; root cause &rarr; reusable rule, the case
-              studies published on this site a curated subset of it. It&apos;s a system of files and
-              config, not a versioned repo &mdash; so the honest evidence is what it does, not a commit
-              count.
-            </p>
-          </div>
+          <SectionLabel>Outcomes</SectionLabel>
+          <OutcomeReceipt />
         </section>
       </AnimateIn>
 
       {/* ── What I owned ──────────────────────────────────────────────── */}
       <AnimateIn>
         <section className="mt-16">
-          <div
-            className="p-8 rounded-2xl border-2"
-            style={{ borderColor: ACCENT.border, backgroundColor: ACCENT.bg }}
-          >
-            <SectionLabel>What I owned</SectionLabel>
-            <ul className="space-y-3 text-sm leading-relaxed">
-              <li className="flex gap-3">
-                <span className="font-mono font-bold" style={{ color: ACCENT.deep }}>01</span>
-                <span>
-                  <strong>Designed &amp; architected</strong> the governance &mdash; the four-layer
-                  memory model, the enforcement layer, the capability-ledger loop, and the auto-derived
-                  registry that keeps it honest.
-                </span>
-              </li>
-              <li className="flex gap-3">
-                <span className="font-mono font-bold" style={{ color: ACCENT.deep }}>02</span>
-                <span>
-                  <strong>Directed</strong> the AI build &mdash; wrote the rules and specs, set where the
-                  model may and may not be trusted, and decided what graduated into an enforced hook and
-                  what retired.
-                </span>
-              </li>
-              <li className="flex gap-3">
-                <span className="font-mono font-bold" style={{ color: ACCENT.deep }}>03</span>
-                <span>
-                  <strong>Was the verification gate</strong> &mdash; validated behavior and
-                  domain-correctness on the running system, not &ldquo;it compiles,&rdquo; then encoded
-                  that judgment as rules so it survives my own attention drift.
-                </span>
-              </li>
-            </ul>
-          </div>
+          <SectionLabel>What I owned</SectionLabel>
+          <h2 className="mb-6 text-2xl font-bold tracking-tight sm:text-3xl">
+            The role was not "AI user." It was system operator.
+          </h2>
+          <OwnershipCards />
         </section>
       </AnimateIn>
 
