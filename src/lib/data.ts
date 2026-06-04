@@ -155,13 +155,15 @@ export const workCaseStudies: WorkCaseStudy[] = [
     slug: "ivybloom",
     name: "IvyBloom",
     tagline:
-      "An adaptive-learning platform with AI cost discipline and mastery tracking I designed end-to-end.",
+      "An AI tutoring platform that reads a student's real growth over time — with an integrity layer that verifies the learning is actually theirs.",
     role: "Designed · Directed AI build · Verified end-to-end",
     summary:
-      "Multi-AI lesson generation with refund-on-failure on paid routes, assessment-calibrated mastery tracking, and a portfolio builder that turns months of learning into application-ready records.",
+      "MAP-driven, bank-first instruction so it can't hallucinate facts, an academic-integrity layer that catches AI-pasted work and makes the student prove understanding, and a full admissions suite — designed, directed, and validated end-to-end.",
+    cover: "/work/ivybloom/cover.png",
     accent: "#F7F1FF",
     borderColor: "#A78BFA",
-    status: "in-progress",
+    status: "published",
+    href: "/work/ivybloom",
   },
   {
     slug: "sunnyinvoices",
