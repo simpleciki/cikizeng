@@ -93,3 +93,11 @@ export function Arrow({ label }: { label?: string }) {
     </div>
   );
 }
+
+export function KeyPoint({ children }: { children: ReactNode }) {
+  return (
+    <strong className="my-1 inline-block max-w-full box-border break-words rounded-md border-[3px] border-[#FF4D5A] bg-white px-2 py-1 font-black leading-relaxed text-[#136DFF]">
+      {children}
+    </strong>
+  );
+}

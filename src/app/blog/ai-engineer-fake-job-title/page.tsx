@@ -12,6 +12,7 @@ import {
   ParadigmShiftDiagram,
   TaskCompositionDiagram,
 } from "./_components/process-diagrams";
+import { KeyPoint } from "./_components/visual-primitives";
 
 export const metadata: Metadata = {
   title: '"AI Engineer" Is a Fake Job Title',
@@ -84,7 +85,8 @@ export default function AiEngineerFakeJobTitlePage() {
             retail operation, and then wired AI into them. And I&apos;ve
             designed and shipped AI products of my own. That combination is
             exactly why the gap is so visible to me: the thing most companies
-            are hiring for is not the thing that makes AI work.
+            are hiring for is{" "}
+            <KeyPoint>not the thing that makes AI work.</KeyPoint>
           </p>
 
           <ThesisMap />
@@ -119,7 +121,7 @@ export default function AiEngineerFakeJobTitlePage() {
           </p>
           <p>
             Most companies haven&apos;t registered the shift. They&apos;re using
-            2024 thinking to hire 2026 people.
+            <KeyPoint>2024 thinking to hire 2026 people.</KeyPoint>
           </p>
 
           <h2 className="text-xl font-bold tracking-tight mt-10 mb-4">
@@ -161,7 +163,9 @@ export default function AiEngineerFakeJobTitlePage() {
             These three are trained differently, produce different things, and
             should be hired against completely different criteria. But in the
             job description, they all collapse into one phrase:{" "}
-            <em>AI Engineer.</em>
+            <KeyPoint>
+              <em>AI Engineer.</em>
+            </KeyPoint>
           </p>
           <p>Here&apos;s where it breaks:</p>
           <ul className="list-disc list-inside space-y-2 ml-2">
@@ -182,8 +186,8 @@ export default function AiEngineerFakeJobTitlePage() {
           <HiringMismatchDiagram />
 
           <p>
-            The mismatch happens at three separate points. Project failure is
-            nearly guaranteed.
+            The mismatch happens at three separate points.{" "}
+            <KeyPoint>Project failure is nearly guaranteed.</KeyPoint>
           </p>
 
           <h2 className="text-xl font-bold tracking-tight mt-10 mb-4">
@@ -216,9 +220,13 @@ export default function AiEngineerFakeJobTitlePage() {
             Count them. The items that require writing code are #2 and #4 — and
             maybe half of #5. The remaining five-plus are process design,
             process change, cross-department coordination, human-machine
-            workflow design, and change management.
+            workflow design, and <KeyPoint>change management.</KeyPoint>
           </p>
-          <p>That is a consultant&apos;s job wearing an engineer&apos;s title.</p>
+          <p>
+            <KeyPoint>
+              That is a consultant&apos;s job wearing an engineer&apos;s title.
+            </KeyPoint>
+          </p>
           <p>
             My read: the essence of this role is &quot;the engineer who leans
             consultant,&quot; or &quot;the consultant who leans engineer.&quot;
@@ -280,10 +288,10 @@ export default function AiEngineerFakeJobTitlePage() {
           </p>
           <p>
             This is a structurally underrated fact:{" "}
-            <strong>
+            <KeyPoint>
               roughly 70% of an enterprise&apos;s AI-adoption capability is
               non-portable and non-purchasable.
-            </strong>
+            </KeyPoint>
           </p>
 
           <h2 className="text-xl font-bold tracking-tight mt-10 mb-4">
@@ -327,7 +335,7 @@ export default function AiEngineerFakeJobTitlePage() {
             company hasn&apos;t figured out what problem it&apos;s solving — it
             grabbed a fashionable label and stuck it on. A role called &quot;Lab
             Automation Software Engineer&quot; means the company already knows
-            what it&apos;s doing.
+            {" "}<KeyPoint>what it&apos;s doing.</KeyPoint>
           </p>
 
           <h2 className="text-xl font-bold tracking-tight mt-10 mb-4">
@@ -336,7 +344,7 @@ export default function AiEngineerFakeJobTitlePage() {
           <p>
             If the core of this role is organizational capital + process
             understanding + hands-on ability, then the supply can only come from
-            inside.
+            {" "}<KeyPoint>inside.</KeyPoint>
           </p>
           <p>The profile looks roughly like this:</p>
           <ul className="list-disc list-inside space-y-2 ml-2">
@@ -414,8 +422,9 @@ export default function AiEngineerFakeJobTitlePage() {
             must keep a human.
           </p>
           <p>
-            The output of these two differs by more than 10x. But redesigning
-            processes is an order of magnitude harder than configuring tools.
+            The output of these two differs by{" "}
+            <KeyPoint>more than 10x.</KeyPoint> But redesigning processes is an
+            order of magnitude harder than configuring tools.
           </p>
           <p>
             Most companies are still in the &quot;configure tools&quot;
@@ -430,7 +439,7 @@ export default function AiEngineerFakeJobTitlePage() {
             What makes this shift genuinely hard is that it isn&apos;t a
             technical problem — it&apos;s an organizational one. Technical
             problems can be solved by buying. Organizational problems
-            can&apos;t.
+            {" "}<KeyPoint>can&apos;t.</KeyPoint>
           </p>
 
           <h2 className="text-xl font-bold tracking-tight mt-10 mb-4">
@@ -465,7 +474,9 @@ export default function AiEngineerFakeJobTitlePage() {
             who&apos;ve been quietly tinkering with AI lately, who&apos;ve run a
             cross-department project. No more than five.
           </p>
-          <p>That person is almost certainly already in there.</p>
+          <p>
+            <KeyPoint>That person is almost certainly already in there.</KeyPoint>
+          </p>
           <p>
             The only question left is whether you&apos;ll give them the time,
             the resources, and a chance to stop doing their old job.
