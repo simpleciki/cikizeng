@@ -305,6 +305,15 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "ai-engineer-fake-job-title",
+    title: '"AI Engineer" Is a Fake Job Title',
+    date: "2026-06-05",
+    excerpt:
+      "A company decides it needs AI, hires an expensive 'AI Engineer,' and stalls at month three. Then it hires someone pricier — and stalls again. The logic of the hire was broken at the root — and the role that actually works has no market label yet, because it can only come from inside.",
+    readTime: "9 min",
+    tags: ["Enterprise AI", "AI Hiring", "Future of Work"],
+  },
+  {
     slug: "day-9-ai-debug-log-isnt-private",
     title: "Day 9: Your AI Debug Log Isn't Private",
     date: "2026-05-21",
