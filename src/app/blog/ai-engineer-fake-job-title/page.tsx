@@ -2,6 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LinkButton } from "@/components/ui/link-button";
 import { AnimateIn } from "@/components/ui/animate-in";
+import { HeroVisual, ThesisMap } from "./_components/hero-and-map";
+import {
+  HiringMismatchDiagram,
+  JobTitleLayersDiagram,
+} from "./_components/job-diagrams";
+import {
+  OrgCapitalDiagram,
+  ParadigmShiftDiagram,
+  TaskCompositionDiagram,
+} from "./_components/process-diagrams";
 
 export const metadata: Metadata = {
   title: '"AI Engineer" Is a Fake Job Title',
@@ -16,7 +26,7 @@ export const metadata: Metadata = {
 
 export default function AiEngineerFakeJobTitlePage() {
   return (
-    <div className="mx-auto max-w-3xl px-6 py-24">
+    <div className="mx-auto max-w-5xl px-6 py-24">
       <AnimateIn>
         <Link
           href="/blog"
@@ -51,10 +61,10 @@ export default function AiEngineerFakeJobTitlePage() {
             three — and where the role that actually works is already hiding.
           </p>
         </div>
+        <HeroVisual />
       </AnimateIn>
 
-      <AnimateIn delay={100}>
-        <article className="prose-custom space-y-6 text-sm leading-relaxed sm:text-base sm:leading-relaxed">
+      <article className="prose-custom mx-auto max-w-3xl space-y-6 text-sm leading-relaxed sm:text-base sm:leading-relaxed">
           <p>
             There&apos;s a pattern playing out in company after company right
             now. A business decides it needs AI, so it spends big to hire an
@@ -76,6 +86,8 @@ export default function AiEngineerFakeJobTitlePage() {
             exactly why the gap is so visible to me: the thing most companies
             are hiring for is not the thing that makes AI work.
           </p>
+
+          <ThesisMap />
 
           <h2 className="text-xl font-bold tracking-tight mt-10 mb-4">
             The bottleneck moved — and most companies didn&apos;t notice
@@ -117,6 +129,9 @@ export default function AiEngineerFakeJobTitlePage() {
             The phrase &quot;AI Engineer&quot; quietly covers three people with
             completely different skill profiles.
           </p>
+
+          <JobTitleLayersDiagram />
+
           <p>
             <strong>1. The floor-raiser.</strong>{" "}Makes it possible for
             non-coders to demo something, and for junior engineers to ship
@@ -163,6 +178,9 @@ export default function AiEngineerFakeJobTitlePage() {
               (someone who understands the process).
             </li>
           </ul>
+
+          <HiringMismatchDiagram />
+
           <p>
             The mismatch happens at three separate points. Project failure is
             nearly guaranteed.
@@ -175,6 +193,9 @@ export default function AiEngineerFakeJobTitlePage() {
             When you map out what this new role actually does day-to-day, it
             comes to roughly eight things:
           </p>
+
+          <TaskCompositionDiagram />
+
           <ol className="list-decimal list-inside space-y-2 ml-2">
             <li>Design the new, AI-inclusive workflow.</li>
             <li>Deploy the system that lets the AI run.</li>
@@ -220,6 +241,9 @@ export default function AiEngineerFakeJobTitlePage() {
             Because a large part of what this role needs isn&apos;t{" "}
             <em>knowledge.</em> It&apos;s <em>organizational capital.</em>
           </p>
+
+          <OrgCapitalDiagram />
+
           <p>
             Organizational capital is knowing which veteran actually understands
             the procurement process; knowing which leaders you clear before you
@@ -373,6 +397,9 @@ export default function AiEngineerFakeJobTitlePage() {
             that the entire paradigm of enterprise AI adoption is shifting —
             from <em>configuring tools</em> to <em>redesigning processes.</em>
           </p>
+
+          <ParadigmShiftDiagram />
+
           <p>
             The &quot;configure tools&quot; paradigm: give every employee an AI
             assistant, shave a little off everyone&apos;s workload. One person +
@@ -450,8 +477,7 @@ export default function AiEngineerFakeJobTitlePage() {
             Automation Software Engineer&quot; — careers.lilly.com (San Diego
             biotech center).
           </p>
-        </article>
-      </AnimateIn>
+      </article>
 
       <AnimateIn delay={200}>
         <div className="mt-16 pt-8 border-t-2 border-[#383838] flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
